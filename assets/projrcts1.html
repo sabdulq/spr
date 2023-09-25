@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Nav Bars</title>
+  <style>
+    /* Your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #f00;
+    }
+
+    .navbar {
+      top: 0;
+      margin-top: 0;
+      background-color: #FF6347;
+      color: #fff;
+      display: flex;
+      padding: 10px;
+    }
+
+    .navbar a {
+      color: #fff;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #8cafcd;
+    }
+
+    .content {
+      margin-top: 20px;
+    }
+
+    .second-navbar {
+      background-color: #FF6347;
+      display: flex;
+      padding: 10px;
+    }
+
+    .second-navbar a {
+      color: white;
+      padding: 8px 16px;
+      text-decoration-line: none;
+    }
+
+    .second-navbar a.active {
+        background-color: #020202;
+        color: #fe3c3c;
+        text-decoration-line: underline;
+  }
+    .page {
+      display: none;
+    }
+
+    .page.show {
+      display: block;
+    }
+
+    .f {
+        display: block;
+        background-color: #050505;
+        color: #f00;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+    }
+    /* .container {  
+        width: 700px;
+        height: 100px;
+        background-color: #000;
+} */
+
+.window {
+  height:350px;
+  width: 850px;
+  background-color: #000;
+  border: 2px solid #333;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: -19px 19px 28px #5a5a5a,
+              19px -19px 28px #0c0c0c;
+ padding: 5px;
+
+}
+
+.window-title {
+  height: 30px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.window-title p {
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.window-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.window-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.window-button.close {
+  background-color: #f00;
+}
+
+.window-button.close:hover {
+  background-color: rgb(182, 2, 2);
+  cursor: pointer;
+}
+
+.window-button.reduce {
+  background-color: #ff0;
+}
+
+.window-button.reduce:hover {
+  background-color: rgb(172, 172, 4);
+  cursor: pointer;
+}
+
+.window-button.fullscreen {
+  background-color: #0f0;
+}
+
+.window-button.fullscreen:hover {
+  background-color: rgb(7, 159, 7);
+  cursor: pointer;
+}
+
+.window-button:focus {
+  outline: none;
+}
+
+.console {
+  width: 100%;
+  height: calc(100% - 30px);
+  background-color: #000;
+  color: #fff;
+  overflow: auto;
+}
+
+.console pre {
+  margin: 0;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.console pre code {
+  color: #0f0;
+  outline: none;
+}
+
+.console::-webkit-scrollbar {
+  width: 8px;
+}
+
+.console::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+.console::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 10px;
+  border: 2px solid #333;
+}
+
+.console::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+#case-study-page{
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#snav{
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+nav{
+  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+#f{
+  margin: 0;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+}
+.second-navbar {
+  margin-bottom: 0;
+}
+.f h1{
+  margin: 0;
+}
+  </style>
+  <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="codemirror/theme/dracula.css">
+  <link rel="stylesheet" href="prism/prism.css">
+</head>
+<body onload="initializePage(); preloadCSVFile();">
+  <nav class="navbar">
+    <a href="home.html">Home</a>
+    <a href="data_analysis_projects.html">Data Analysis Projects</a>
+    <a href="web_design_projects.html">Web Design Projects</a>
+    <a href="resume.html">Resume</a>
+  </nav>
+  <div class="f" id="f">
+    <h1 title>Title: COVID-19 Vaccination Progress Worldwide - A Case Study</h1>
+</div>
+<nav id="snav" class="navbar second-navbar">
+  <a href="#" id="case-study-link" class="active" onclick="switchPage('case-study')">Case Study</a>
+  <a href="#" id="dashboard-link" onclick="switchPage('dashboard')">Dashboard</a>
+  <a href="#" id="code-link" onclick="switchPage('code')">Code</a>
+</nav>
+
+  
+    <div id="case-study-page" class="page">
+      <!-- Content for the Case Study page -->
+      <h1>Introduction:</h1>
+      <p>In this case study, we explore a dataset named "customer_data" containing information related to COVID-19 vaccinations across different countries. The dataset includes various columns such as country, iso_code, date, total_vaccinations, people_vaccinated, people_fully_vaccinated,
+        daily_vaccinations_raw, daily_vaccinations, total_vaccinations_per_hundred, people_vaccinated_per_hundred, people_fully_vaccinated_per_hundred, daily_vaccinations_per_million, and vaccines.
+      </p>
+      <br>
+      <h1>Data Exploration:</h1>
+      <p>
+        Before diving into the analysis and visualizations, we first examine
+         the dataset's structure and content. The dataset provides a time-series 
+         record of COVID-19 vaccination data for various countries. It includes
+          information on the total number of vaccinations, the number of people 
+          partially and fully vaccinated, daily vaccination rates, and vaccination rates 
+          per hundred people and per million people.
+      </p>
+      <br>
+      <h1>Data Analysis and Visualization:</h1>
+      <p>
+        To gain insights from the data, we performed SQL queries 
+        and created visualizations using Tableau. Let's summarize our key findings:
+      </p>
+      <br>
+      <h2>Total People Vaccinated Worldwide:</h2>
+      <p>
+        We used SQL to calculate the total number of people vaccinated in the 
+        world by summing up the "people_vaccinated" column from the dataset. 
+        Our analysis shows that a total of X million people have been vaccinated globally.
+      </p>
+      <br>
+      <h2>Vaccination Projection for Each Country:</h2>
+      <p>
+        Using SQL, we projected the number of people who will be vaccinated
+         in each country by next year. This projection considered the current 
+         number of people vaccinated and added the daily vaccination rate for the next
+          365 days. It is important to note that this is a simple projection and actual 
+          vaccination rates may vary due to changing circumstances.
+      </p>
+      <br>
+      <h2>Total Vaccinations per Country:</h2>
+      <p>
+        We visualized the total number of vaccinations in each country using a bar chart in Tableau. 
+        The chart revealed that some countries have administered a significantly higher number of
+         vaccinations compared to others.
+      </p>
+      <br>
+      <h2>Vaccination Rate per Hundred People:</h2>
+      <p>
+        Another visualization depicted the vaccination rate
+         per hundred people for different countries. This chart showcased
+          countries that have achieved higher vaccination rates per hundred people,
+           indicating more widespread vaccination efforts.
+      </p>
+      <br>
+      <h2>Daily Vaccinations per Million People:</h2>
+      <p>
+        To understand the intensity of vaccination efforts,
+         we created a bar chart to compare the daily vaccination rate per million 
+         people across countries. This chart highlighted countries with robust
+          vaccination campaigns.
+      </p>
+      <br>
+      <h1>Conclusion:</h1>
+      <p>
+        Through this case study, we delved into the COVID-19 vaccination data and performed 
+        various analyses and visualizations to gain valuable insights. We discovered that X 
+        million people have been vaccinated worldwide. Additionally, our 
+        projection indicates the potential vaccination outcomes for each country by next year.
+        Our visualizations allowed us to identify countries with higher total vaccinations and vaccination rates, 
+        indicating successful vaccination campaigns. It also shed light on countries with high daily vaccination 
+        rates per million people, showcasing their proactive efforts in combating the pandemic.
+        It is important to note that this analysis is based on the data available at the time of the study and is subject to
+         change as new data becomes available.
+         The success of vaccination campaigns depends on various factors such as vaccine availability, 
+         government policies, public awareness, and response to new variants. Therefore, continuous monitoring and assessment
+          are crucial for effectively managing
+          vaccination efforts worldwide.In conclusion, the data analysis and visualizations presented in this case study provide a valuable snapshot of the COVID-19 vaccination
+           progress globally. They offer important insights for policymakers,
+           healthcare professionals, and researchers to gauge the effectiveness of vaccination strategies and guide future efforts to combat the pandemic successfully.
+      </p>
+    </div>
+
+    <div id="dashboard-page" class="page">
+      <!-- Content for the Dashboard page -->
+      <h1>Dashboard Page</h1>
+      <p>This is the content of the Dashboard.</p>
+    </div>
+
+    <div id="code-page" class="page">
+      <!-- Content for the Code page -->
+      <h1>Code Page</h1>
+      <h2>SQL Code Editor</h2><br><br>
+      <div class="container"> 
+        <div class="window"> 
+          <div class="window-title">
+            <p>Console Window</p>
+            <div class="window-buttons">
+              <div class="window-button fullscreen"></div>
+              <div class="window-button reduce"></div>
+              <div class="window-button close"></div>
+            </div>
+          </div>
+          <div class="console">
+            <pre><code>SELECT SUM(people_vaccinated) AS Total_people_vaccinated_in_the_world
+                FROM newcvd.customer_data.cwd;
+                SELECT 
+                    country,
+                    MAX(people_vaccinated) AS people_vaccinated_current,
+                    MAX(people_vaccinated) + (365 * MAX(daily_vaccinations)) AS people_vaccinated_next_year
+                FROM newcvd.customer_data.cwd
+                GROUP BY country;
+                CREATE TABLE customer_data.cwd_vaccination_projection1 AS
+                SELECT 
+                    country,
+                    MAX(people_vaccinated) AS people_vaccinated_current,
+                    MAX(people_vaccinated) + (365 * MAX(daily_vaccinations)) AS people_vaccinated_next_year
+                FROM newcvd.customer_data.cwd
+                GROUP BY country;
+                </code></pre>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      
+      <h2>CSV File Editor</h2>
+    </div>
+  </div>
+
+  <script src="codemirror/lib/codemirror.js"></script>
+  <script src="papaparse/papaparse.min.js"></script>
+  <script src="prism/prism.js"></script>
+  <script>
+function initializePage() {
+    // Set the default active page to "case-study"
+    switchPage('case-study');
+
+    const caseStudyLink = document.getElementById('case-study-link');
+    const dashboardLink = document.getElementById('dashboard-link');
+    const codeLink = document.getElementById('code-link');
+
+    caseStudyLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        switchPage('case-study');
+    });
+
+    dashboardLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        switchPage('dashboard');
+    });
+
+    codeLink.addEventListener('click', function (event) {
+        event.preventDefault();
+        switchPage('code');
+    });
+}
+
+function switchPage(pageName) {
+    const pages = document.querySelectorAll(".page");
+    pages.forEach((page) => page.classList.remove("show"));
+
+    const selectedPage = document.getElementById(`${pageName}-page`);
+    selectedPage.classList.add("show");
+
+    // Remove the 'active' class from all links and add it to the selected link
+    const links = document.querySelectorAll(".second-navbar a");
+    links.forEach((link) => link.classList.remove("active"));
+    const selectedLink = document.getElementById(`${pageName}-link`);
+    selectedLink.classList.add("active");
+
+    // Update the title text based on the selected page
+    const titleText = getTitleText(pageName);
+    const titleElement = document.querySelector("#f h1");
+    titleElement.textContent = titleText;
+}
+
+function getTitleText(pageName) {
+    switch (pageName) {
+        case 'case-study':
+            return "Title: COVID-19 Vaccination Progress Worldwide - A Case Study";
+        case 'dashboard':
+            return "Title: COVID-19 Vaccination Progress Worldwide - Dashboard";
+        case 'code':
+            return "Title: COVID-19 Vaccination Progress Worldwide - Code";
+        default:
+            return "Title: COVID-19 Vaccination Progress Worldwide - A Case Study";
+    }
+}
+
+</script>
+
+</body>
+</html>
