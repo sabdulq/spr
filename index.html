@@ -25,7 +25,7 @@ nav{
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 10px;
   position: sticky;
   background-color: #FF6347;
@@ -34,11 +34,11 @@ nav{
     z-index: 100;
 }
 
-.navbar-content {
+/* .navbar-content {
   flex: 1;
   display: flex;
   justify-content: center;
-}
+} */
 
 .navbar a {
   color: white;
@@ -920,22 +920,26 @@ hr {
   font-family: Arial, Helvetica, sans-serif;
 
 }
-
+@media only screen and (min-width: 768px) {
+  .dr{
+    display: none;
+  }
+}
   </style>
 </head>
 
 <body>
   <nav class="navbar">
-    <div class="navbar-content">
+    <!-- <div class="navbar-content">
       <div class="animated-text" id="animated-text">My Website</div>
-    </div>
+    </div> -->
     <div class="pcnav">
       <a href=".container1" id="il" class="active"><i class="fa fa-home"></i> Home</a>
       <a href="#container2" id="il" class=""><i class="fa fa-user"></i> About Me</a>
       <a href="#projects" id="il"><i class="fa fa-code"></i> Projects</a>
 
       <a href="#Certificates-div" id="il"><i class="fa fa-certificate"></i> Certificates</a>
-      <a href="#skills-div" id="il" class=""><i class="fa fa-cogs fa-spin"></i> Skills</a>
+      <a href=".skills-container" id="il" class=""><i class="fa fa-cogs fa-spin"></i> Skills</a>
       <a href="assets/myresume.html" id="il"><i class="fa fa-file"></i> Resume</a>
     </div>
     
