@@ -15,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   background-color:whitesmoke;
-  color: whitesmoke;
+  color: black;
   font-family: 'Poppins', sans-serif;
 }
 nav{
@@ -255,10 +255,10 @@ nav{
 
 
 .container1 {
-  position: relative;
   display: flex;
+  justify-content: space-between; /* This line is added to push child elements to the far ends */
   background-color: #FF6347;
-  width: 100ppx;
+  width: 100ppx; /* Corrected typo from 100ppx to 100% */
   color: whitesmoke;
   height: 450px;
   overflow: hidden;
@@ -267,8 +267,7 @@ nav{
 }
 
 .image-container1 {
-  position: relative;
-  margin-left: 5%;
+  margin-left: 5%; /* You can adjust or remove this depending on exact placement */
   width: 300px;
   height: 400px;
   overflow: hidden;
@@ -278,15 +277,13 @@ nav{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  overflow: hidden;
 }
 
 .content-container {
   margin-top: 50px;
+  max-width: 60%;
   background-color: none;
-  position: relative;
   color: aliceblue;
-  margin-left: 5%;
   padding: 20px;
   overflow: hidden;
 }
@@ -450,9 +447,7 @@ hr {
   overflow: hidden;
 }
 
-h2 {
-  text-align: center;
-}
+
 
 .skills-bar-container {
   margin-top: 30px;
@@ -867,6 +862,64 @@ h2 {
     width: 95%;
   }
 }
+#summary{
+  font-size: x-large;
+    font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#profile{
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#me{
+  font-size: x-large;
+    font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#about{
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 skills per row */
+    gap: 20px;
+    padding: 20px;
+}
+
+.skill h4 {
+    margin-bottom: 10px;
+}
+
+.progress {
+    background-color: #ECECEC; /* light gray */
+    border-radius: 5px;
+    height: 20px;
+}
+
+.progress-bar {
+    background-color: #3498db; /* adjust color as desired */
+    height: 100%;
+    line-height: 20px; /* aligns text vertically */
+    text-align: center; /* centers percentage text */
+    border-radius: 5px;
+}
+
+/* Responsiveness for tablets and phones */
+@media only screen and (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* 1 skill per row on smaller screens */
+    }
+}
+#skill{
+  text-align: center;
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
 
   </style>
 </head>
@@ -899,8 +952,10 @@ h2 {
 <hr>  
   <div class="container1">
     <div class="content-container">
-      <h2>About the Image</h2>
-      <p>guvvvvvvvvvvvvvggghbbbb ubhhhhhhhhhhhhhh ubbbbbbbbbbbbb</p>
+      <h2 id="profile">Profile Summary</h2>
+      <p id="summary">Passionate data science student with a specialization in data analysis. 
+        Demonstrated expertise through
+         case studies and web deployment projects. Holder of a Google Data Analyst certificate.</p>
     </div>
     <div class="image-container1">
       <img src="images/Saif-removebg-preview.png" id="rotating-image" alt="Rotating Image">
@@ -911,22 +966,38 @@ h2 {
       <img src="images/Saif-removebg-preview.png" id="rotating-image2" alt="Rotating Image">
     </div>
     <div class="content-container2">
-      <h2>About the Image</h2>
-      <p>guvvvvvvvvvvvvvggghbbbb ubhhhhhhhhhhhhhh ubbbbbbbbbbbbb</p>
+      <h2 id="about">About Me</h2>
+      <p id="me">I am currently a dedicated data science student at
+         Indiana University Purdue University Indianapolis (IUPUI). 
+         Since my childhood, I've been 
+         captivated by the world of coding, always eager to unravel the
+         mysteries of technology. This passion led me to pursue a career 
+         in data science, where I can merge my analytical skills with my 
+         love for coding. Over the years, I've honed my expertise through 
+         various case studies and web deployment projects. My ultimate goal 
+         is to leverage data-driven insights to address real-world challenges. 
+         Holding a Google Data Analyst certificate, I am committed to continuous 
+         learning and growth within this dynamic industry.</p>
     </div>
   </div>
   <div id="projects">    <h1 class="pr">My projects</h1></div>
   <div id="scroll-div">
 
       <div class="card">
-        <img class="cardimg" src="images/case-study.webp" alt="jk">
+        <img class="cardimg" src="images/p1.jpeg" alt="jk">
         <div class="card__descr-wrapper">
           <p class="card__title">
-            <h3>Data Visualization Project</h3>
+            <h3>Case Study of US Crime Reporting Patterns</h3>
          
         </p>
         <p class="card__descr">
-          <p> This data visualization project offers interactive insights on global COVID-19 vaccination progress, including total vaccinations, rates by country, and future trends, providing valuable information on the collective pandemic response.</p>
+          <p> 
+            This case study delves deep into the patterns of US crime reports, 
+            uncovering vital temporal and geographical nuances. We highlight 
+            potential crime hotspots and spotlight the diversity of reporting 
+            organizations. Our insights guide informed decision-making in crime 
+            response and policy formulation.
+          </p>
          </p>
         <div class="card__links">
       
@@ -937,78 +1008,57 @@ h2 {
         </div>
       </div>
       
-      <div class="card2">
+      <div class="card">
 
+                <img class="cardimg" src="images/p1.jpeg" alt="jk">
         <div class="card__descr-wrapper">
           <p class="card__title">
-            <h3>Data Visualization Project</h3>
+            <h3>Case Study of US Crime Reporting Patterns</h3>
          
         </p>
         <p class="card__descr">
-          <p> This data visualization project offers interactive insights on global COVID-19 vaccination progress, including total vaccinations, rates by country, and future trends, providing valuable information on the collective pandemic response.</p>
+          <p> 
+            This case study delves deep into the patterns of US crime reports, 
+            uncovering vital temporal and geographical nuances. We highlight 
+            potential crime hotspots and spotlight the diversity of reporting 
+            organizations. Our insights guide informed decision-making in crime 
+            response and policy formulation.
+          </p>
          </p>
         <div class="card__links">
-          <div>
+      
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
             <a class="link" href="Project1/">View Project</a><br><br>
-          </div>
+
         </div>
         </div>
       </div>
-      <div class="card2">
+      <div class="card">
 
+                <img class="cardimg" src="images/p1.jpeg" alt="jk">
         <div class="card__descr-wrapper">
           <p class="card__title">
-            <h3>Data Visualization Project</h3>
+            <h3>Case Study of US Crime Reporting Patterns</h3>
          
         </p>
         <p class="card__descr">
-          <p> This data visualization project offers interactive insights on global COVID-19 vaccination progress, including total vaccinations, rates by country, and future trends, providing valuable information on the collective pandemic response.</p>
+          <p> 
+            This case study delves deep into the patterns of US crime reports, 
+            uncovering vital temporal and geographical nuances. We highlight 
+            potential crime hotspots and spotlight the diversity of reporting 
+            organizations. Our insights guide informed decision-making in crime 
+            response and policy formulation.
+          </p>
          </p>
         <div class="card__links">
-          <div>
+      
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
             <a class="link" href="Project1/">View Project</a><br><br>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="card2">
 
-        <div class="card__descr-wrapper">
-          <p class="card__title">
-            <h3>Data Visualization Project</h3>
-         
-        </p>
-        <p class="card__descr">
-          <p> This data visualization project offers interactive insights on global COVID-19 vaccination progress, including total vaccinations, rates by country, and future trends, providing valuable information on the collective pandemic response.</p>
-         </p>
-        <div class="card__links">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-            <a class="link" href="Project1/">View Project</a><br><br>
-          </div>
         </div>
         </div>
       </div>
-      <div class="card2">
 
-        <div class="card__descr-wrapper">
-          <p class="card__title">
-            <h3>Data Visualization Project</h3>
-         
-        </p>
-        <p class="card__descr">
-          <p> This data visualization project offers interactive insights on global COVID-19 vaccination progress, including total vaccinations, rates by country, and future trends, providing valuable information on the collective pandemic response.</p>
-         </p>
-        <div class="card__links">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
-            <a class="link" href="Project1/">View Project</a><br><br>
-          </div>
-        </div>
-        </div>
-      </div>
     </div>
     <div id="Certificates-div"><br><br>
       <h1>
@@ -1016,9 +1066,8 @@ h2 {
       </h1><br>
       <img id="Certificates-card" src="images/Screenshot_20230808_061621_Samsung Notes.jpg"></img ><br><br><br>
     </div>        
-    <div id="skills">    <h1 class="pr">My Skills</h1></div>
-    <div id="skills-div" class="hidden"> <!-- Initially hidden -->
-      <!-- First column -->
+    <!-- <div id="skills">    <h1 class="pr">My Skills</h1></div>
+    <div id="skills-div" class="hidden">
       <div id="div">
       <ul class="skills-bar-container">
         <li>
@@ -1085,7 +1134,6 @@ h2 {
     </div>
   </li>
 </ul>
-<!-- Second column -->
 <ul class="skills-bar-container">
       <li>
         <div class="progressbar-title">                                      <h3>HTML5</h3>
@@ -1152,6 +1200,122 @@ h2 {
 </li>
 </ul>
 </div>
+</div> -->
+<div >
+
+<h1 id="skill">Skills</h1>
+<div class="skills-container">
+
+    <div class="skill">
+        <h4>Python</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 90%;">
+                90%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>R</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 85%;">
+                85%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>SQL</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 88%;">
+                88%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Data Analysis</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 92%;">
+                92%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Machine Learning</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 90%;">
+                90%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Data Visualization</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 89%;">
+                89%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Tableau</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 87%;">
+                87%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Big Data</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 86%;">
+                86%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Google Cloud</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 85%;">
+                85%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Team Collaboration</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 93%;">
+                93%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>Database Management</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 90%;">
+                90%
+            </div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <h4>MS PowerPoint</h4>
+        <div class="progress">
+            <div class="progress-bar" style="width: 88%;">
+                88%
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </div>
 <div class="preparemt-div"><br><br>
   <h1 class="contactheader">Contact</h1><br><br>
