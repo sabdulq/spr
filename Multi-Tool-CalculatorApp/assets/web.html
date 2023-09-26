@@ -1,0 +1,307 @@
+
+  </head>
+  <body>
+<!-- Replace the existing <nav> and <div> elements with Bootstrap classes -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" href="#">Ultimate Calculator</a>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-7 mx-auto">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <input
+          type="text"
+          id="search-input"
+          class="form-control"
+          placeholder="Search..."
+        />
+      </div>
+    </div>
+  </div>
+
+    <div class="container"></div>
+    <script>
+      const cardData = [
+        {
+          icon: "fas fa-calculator",
+          title: "Basic Calculator",
+          link: "geralcalc.html",
+          category: "Math Calculations",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-line",
+          title: "Standard Deviation Calculator",
+          link: "SDC.html",
+          category: "Math Calculations",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Binomial Distribution CDF and PDF",
+          link: "biocpdf.html",
+          category: "Statistical Distributions",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Chi-square Distribution",
+          link: "",
+          category: "Statistical Distributions",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Normal Distribution CDF and PDF",
+          link: "",
+          category: "Statistical Distributions",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-ruler-combined",
+          title: "Area and Perimeter Calculator",
+          link: "",
+          category: "Geometry and Measurements",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-square-root-alt",
+          title: "Pythagorean Theorem",
+          link: "",
+          category: "Geometry and Measurements",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-battery-full",
+          title: "Battery Life Estimator",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-dollar-sign",
+          title: "Currency Converter",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        // ... (other card data) ...
+        {
+          icon: "fas fa-gas-pump",
+          title: "Fuel Efficiency Calculator",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-shopping-cart",
+          title: "Shopping Discount Calculatorr",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-weight",
+          title: "BMI Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-heartbeat",
+          title: "Heart Rate Zone Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-tint",
+          title: "Water Intake Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+
+        {
+          icon: "fas fa-calendar-alt",
+          title: "Age Calculator",
+          link: "",
+          category: "Time and Date Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-clock",
+          title: "Time Zone Converter",
+          link: "",
+          category: "Time and Date Calculators",
+          comingSoon: true,
+        },
+
+        // ..added
+        {
+          icon: "fas fa-coffee",
+          title: "Coffee Consumption Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-percent",
+          title: "Percentage Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        // ..added
+        {
+          icon: "fas fa-pizza-slice",
+          title: "Pizza Slice Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-temperature-high",
+          title: "Temperature Converter",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-mortar-pestle",
+          title: "Medicine Dosage Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-microscope",
+          title: "Magnification Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-satellite-dish",
+          title: "Radioactive Decay Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-random",
+          title: "Random Number Generator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-globe-americas",
+          title: "International Dialing Code Converter",
+          link: "",
+          category: "Communication and Travel Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-shoe-prints",
+          title: "Walking Distance Calculator",
+          link: "",
+          category: "Communication and Travel Calculators",
+          comingSoon: true,
+        },
+      ];
+
+      const container = document.querySelector(".container");
+
+      let currentCategory = "";
+
+      cardData.forEach((data) => {
+        if (data.category !== currentCategory) {
+          currentCategory = data.category;
+
+          const categoryTitle = document.createElement("h2");
+          categoryTitle.className = "category-title";
+          categoryTitle.textContent = currentCategory;
+          container.appendChild(categoryTitle);
+        }
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        if (data.comingSoon) {
+          card.innerHTML = `
+      <i class="coming-soon-banner">Coming Soon</i>
+      <a href="${data.link}">
+        <i class="${data.icon}"></i>
+        <p>${data.title}</p>
+      </a>
+    `;
+          card.classList.add("coming-soon");
+        } else {
+          card.innerHTML = `
+      <a href="${data.link}">
+        <i class="${data.icon}"></i>
+        <p>${data.title}</p>
+      </a>
+    `;
+        }
+
+        container.appendChild(card);
+      });
+
+      // ... (your existing JavaScript code) ...
+
+      const searchInput = document.getElementById("search-input");
+      const cards = document.querySelectorAll(".card");
+      const categoryTitles = document.querySelectorAll(".category-title");
+
+      searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        if (searchTerm) {
+          categoryTitles.forEach((title) => {
+            title.style.display = "none";
+          });
+        } else {
+          categoryTitles.forEach((title) => {
+            title.style.display = "block";
+          });
+        }
+
+        cards.forEach((card) => {
+          const title = card.querySelector("p").textContent.toLowerCase();
+          if (title.includes(searchTerm)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      searchInput.addEventListener("focus", () => {
+        searchInput.classList.add("active");
+      });
+
+      searchInput.addEventListener("blur", () => {
+        if (!searchInput.value) {
+          searchInput.classList.remove("active");
+        }
+      });
+      const resizeBanner = () => {
+        const banner = document.querySelector(".coming-soon-banner");
+
+        if (window.innerWidth < 768) {
+          banner.style.fontSize = "12px";
+        } else {
+          banner.style.fontSize = "14px";
+        }
+      };
+
+      window.addEventListener("resize", resizeBanner);
+    </script>
+  </body>
+</html>

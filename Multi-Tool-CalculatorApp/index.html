@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Calculator</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <script src="node_modules/fastclick/lib/fastclick.js"></script>
+
+
+    <style>
+      body {
+        background-color: aliceblue;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      .wrapper {
+        height: 100vh;
+        overflow-y: auto;
+
+        overflow: scroll;
+        margin-right: -18px;
+      }
+
+      nav {
+        font-size: x-large;
+        top: 0;
+        margin-top: 0;
+        background-color: orangered;
+        color: black;
+        display: block;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .title {
+        text-align: center;
+        margin: 0;
+      }
+
+      /* Improved card responsiveness */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 10px;
+      }
+
+      .category-title {
+        width: 100%;
+        text-align: center;
+        font-size: larger;
+        margin: 20px 0;
+      }
+
+      .card {
+        /* ... (existing card styles) ... */
+        width: calc(50% - 15px); /* Display two cards per row */
+        @media (min-width: 768px) {
+          width: calc(33.33% - 20px); /* Display three cards per row */
+        }
+      }
+
+      .card {
+        background: linear-gradient(to bottom right, #ff9500, #ff5e3a);
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+        width: calc(33.33% - 20px);
+        text-align: center;
+        color: white;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .card i {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+      .category-title {
+        font-size: x-large;
+        text-align: center;
+        margin-top: 30px;
+      }
+      @media (min-width: 568px) {
+        .container {
+          justify-content: center;
+        }
+      }
+      /* ... (existing styles) ... */
+
+      /* Unique search bar design */
+      .search-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      #search-input {
+        width: 80%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: width 0.3s;
+      }
+      /* Existing styles ... */
+
+      #search-input.active {
+        width: 70%;
+        transition: width 0.3s;
+      }
+      .card {
+        /* ... (other card styles) ... */
+        position: relative; /* Add this line */
+      }
+
+      .coming-soon-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ff5e3a;
+        color: white;
+        padding: 1px 1px;
+        border-top-left-radius: 5px;
+        font-size: 5px;
+      }
+
+      .card.coming-soon {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .coming-soon-banner {
+        align-self: flex-start;
+      }
+      .coming-soon-banner {
+        position: absolute;
+        top: 5px;
+        left: 0px;
+        max-width: 110%;
+        overflow: hidden;
+        white-space: normal; /* Changed to normal */
+      }
+
+      /* Styles only for coming soon cards */
+      .card.coming-soon .coming-soon-banner {
+          white-space: initial;
+          font-size: 12px;
+          padding: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .card.coming-soon .coming-soon-banner {
+          white-space: initial;
+          font-size: 125px;
+          padding: 60px;
+        }
+      }
+    </style>
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+<script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+
+
+    
+  </head>
+  <body>
+<!-- Replace the existing <nav> and <div> elements with Bootstrap classes -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" href="#">Ultimate Calculator</a>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-7 mx-auto">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+        <input
+          type="text"
+          id="search-input"
+          class="form-control"
+          placeholder="Search..."
+        />
+      </div>
+    </div>
+  </div>
+
+    <div class="container"></div>
+    <script>
+  window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+  });
+</script>
+
+    <script>
+      const cardData = [
+        {
+          icon: "fas fa-calculator",
+          title: "Basic Calculator",
+          link: "assets/geralcalc.html",
+          category: "Math Calculations",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-line",
+          title: "Standard Deviation Calculator",
+          link: "assets/SDC.html",
+          category: "Math Calculations",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Binomial Distribution CDF and PDF",
+          link: "assets/biocpdf.html",
+          category: "Statistical Distributions",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Chi-square Distribution",
+          link: "assets/Chi-square.html",
+          category: "Statistical Distributions",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-chart-bar",
+          title: "Normal Distribution CDF and PDF",
+          link: "assets/normcpdf.html",
+          category: "Statistical Distributions",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-ruler-combined",
+          title: "assets/Area and Perimeter Calculator",
+          link: "",
+          category: "Geometry and Measurements",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-square-root-alt",
+          title: "Pythagorean Theorem",
+          link: "assets/Pythagorean Theorem.html",
+          category: "Geometry and Measurements",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-battery-full",
+          title: "Battery Life Estimator",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-dollar-sign",
+          title: "Currency Converter",
+          link: "assets/currency.html",
+          category: "Financial Calculators",
+          comingSoon: false,
+        },
+        // ... (other card data) ...
+        {
+          icon: "fas fa-gas-pump",
+          title: "Fuel Efficiency Calculator",
+          link: "assets/Fuel Efficiency.html",
+          category: "Financial Calculators",
+          comingSoon: false,
+        },
+        {
+          icon: "fas fa-shopping-cart",
+          title: "Shopping Discount Calculatorr",
+          link: "",
+          category: "Financial Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-weight",
+          title: "BMI Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-heartbeat",
+          title: "Heart Rate Zone Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-tint",
+          title: "Water Intake Calculator",
+          link: "",
+          category: "Health and Fitness Calculators",
+          comingSoon: true,
+        },
+
+        {
+          icon: "fas fa-calendar-alt",
+          title: "Age Calculator",
+          link: "",
+          category: "Time and Date Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-clock",
+          title: "Time Zone Converter",
+          link: "",
+          category: "Time and Date Calculators",
+          comingSoon: true,
+        },
+
+        // ..added
+        {
+          icon: "fas fa-coffee",
+          title: "Coffee Consumption Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-percent",
+          title: "Percentage Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        // ..added
+        {
+          icon: "fas fa-pizza-slice",
+          title: "Pizza Slice Calculator",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-temperature-high",
+          title: "Temperature Converter",
+          link: "",
+          category: "Everyday Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-mortar-pestle",
+          title: "Medicine Dosage Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-microscope",
+          title: "Magnification Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-satellite-dish",
+          title: "Radioactive Decay Calculator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-random",
+          title: "Random Number Generator",
+          link: "",
+          category: "Scientific and Technical Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-globe-americas",
+          title: "International Dialing Code Converter",
+          link: "",
+          category: "Communication and Travel Calculators",
+          comingSoon: true,
+        },
+        {
+          icon: "fas fa-shoe-prints",
+          title: "Walking Distance Calculator",
+          link: "",
+          category: "Communication and Travel Calculators",
+          comingSoon: true,
+        },
+      ];
+
+      const container = document.querySelector(".container");
+
+      let currentCategory = "";
+
+      cardData.forEach((data) => {
+        if (data.category !== currentCategory) {
+          currentCategory = data.category;
+
+          const categoryTitle = document.createElement("h2");
+          categoryTitle.className = "category-title";
+          categoryTitle.textContent = currentCategory;
+          container.appendChild(categoryTitle);
+        }
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        if (data.comingSoon) {
+          card.innerHTML = `
+      <i class="coming-soon-banner">Coming Soon</i>
+      <a href="${data.link}">
+        <i class="${data.icon}"></i>
+        <p>${data.title}</p>
+      </a>
+    `;
+          card.classList.add("coming-soon");
+        } else {
+          card.innerHTML = `
+      <a href="${data.link}">
+        <i class="${data.icon}"></i>
+        <p>${data.title}</p>
+      </a>
+    `;
+        }
+
+        container.appendChild(card);
+      });
+
+      // ... (your existing JavaScript code) ...
+
+      const searchInput = document.getElementById("search-input");
+      const cards = document.querySelectorAll(".card");
+      const categoryTitles = document.querySelectorAll(".category-title");
+
+      searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        if (searchTerm) {
+          categoryTitles.forEach((title) => {
+            title.style.display = "none";
+          });
+        } else {
+          categoryTitles.forEach((title) => {
+            title.style.display = "block";
+          });
+        }
+
+        cards.forEach((card) => {
+          const title = card.querySelector("p").textContent.toLowerCase();
+          if (title.includes(searchTerm)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      searchInput.addEventListener("focus", () => {
+        searchInput.classList.add("active");
+      });
+
+      searchInput.addEventListener("blur", () => {
+        if (!searchInput.value) {
+          searchInput.classList.remove("active");
+        }
+      });
+      const resizeBanner = () => {
+        const banner = document.querySelector(".coming-soon-banner");
+
+        if (window.innerWidth < 768) {
+          banner.style.fontSize = "12px";
+        } else {
+          banner.style.fontSize = "14px";
+        }
+      };
+
+      window.addEventListener("resize", resizeBanner);
+
+      // Add this code to your main page script
+document.addEventListener("scroll", () => {
+  const scrollPosition = window.scrollY;
+  document.cookie = `scrollPosition=${scrollPosition}`;
+});
+// Add this code to your main page script, right after the scroll listener
+window.addEventListener("load", () => {
+  const scrollCookie = document.cookie
+    .split(";")
+    .find((cookie) => cookie.includes("scrollPosition"));
+  
+  if (scrollCookie) {
+    const scrollPosition = parseInt(scrollCookie.split("=")[1]);
+    window.scrollTo(0, scrollPosition);
+  }
+});
+
+    </script>
+  </body>
+</html>

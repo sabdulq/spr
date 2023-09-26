@@ -1,0 +1,314 @@
+<!--
+ Filename: Final-Realease
+ Written by: Saif abdul qadeer
+ Purpose: Making final prject for example senario of gym
+ A user will be asked to input info in stepb by step form methord
+ Date: 13 Dec 2022
+ Modification History:
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Final-Realease</title>
+  <!-- all css links-->
+ 
+  <!-- Link to jquery stylesheet -->
+  <link href="../../theme/jquery-ui.css" rel="stylesheet">
+
+  <!-- Link to Final-Realease stylesheet-->
+  <link href="css/Final-Realease.css" rel="stylesheet" type="text/css">
+
+  <!-- all css links ends-->
+</head>
+<body>
+  <!--Div name = pageTop
+  content:This divs in cludes bacground video two logos 
+  and some text
+  -->
+   <div id ="pageTop">
+    <!-- video  -->
+    <video id="video" autoplay loop muted="" controls>
+      <source src="assets/videos/vid.mp4" type= "video/mp4">
+    </video>
+
+    <!--logos -->
+    <img id="img1" src="assets/images/b.gif" alt="">
+    <img id="img2" src="assets/images/20221210-2214391-unscreen.gif" alt="">
+    
+    <!-- text  -->
+    <h1 id="text">Strengthen everything from calves to confidence.</h1>
+    
+    <p id="p1">
+       Stock footage provided by <a class="link author-link-popup" target="_blank" href="https://www.videvo.net/profile/videvo">Videvo</a>,
+             downloaded from <a class="videvo-redirect" target="_blank" href="https://www.videvo.net">videvo.net</a>
+    </p>
+    
+    </div><!--End of div pageTop-->
+    <br><br>
+    <h1>Following are services we peovide</h1>
+    
+    <!--Start of accordion div-->
+    <div id="accordion">
+      <h3 id="text2">Aerobics Workout</h3>
+      <!--div align image and text inline-->
+      <div id="container">
+        
+        <img id="img3" src="assets/images/Aerobics-Workout.jpg" alt="">
+        
+        <p id="i">Aerobic exercise is any type of cardiovascular conditioning, or “cardio.” It can include activities like brisk walking, swimming, running, or cycling</p>
+      
+      </div>
+      
+      <h3 id="text3">Cardio Workout</h3>
+      
+      <!--div align image and text inline-->
+      <div id="container2">
+        
+        <img id="img4" src="assets/images/Cardio-Workout.jpg" alt="">
+        
+        <p>Cardiovascular exercise is exercise that gets your heart rate up. Though some people use it solely for weight loss, cardio has other benefits as well. There are a wide variety of cardiovascular exercises, but consistency, duration, and intensity are the most important factors for meeting your fitness goals. Read on to learn more about what this type of exercise
+          is, the benefits it offers, and how to create a safe and effective cardiovascular routine. </p>
+      
+        </div>
+      <h3 id="text4">Strength Workout</h3>
+      
+      <!--div align image and text inline-->
+      <div id="container3">
+        
+        <img id="img5" src="assets/images/Strength-Workout.jpg" alt="">
+        <p>No matter your age or athletic ability, strength training is the key to flexibility, mobility, improved performance and lower injury risk. Anyone, at any fitness level, can and should strength train. And it doesn't have to take hours at the gym to see results. We’ll teach you the basics of strength training in the comfort of your own home. It’ll take only nine minutes of exertion to 
+          complete a full-body strength-building workout. Grab a towel and get ready to feel strong. </p>
+      
+        </div>
+      <h3 id="text5">Yoga Workout</h3>
+      
+      <!--div align image and text inline-->
+      <div id="container4">
+        
+        <img id="img6" src="assets/images/Yoga-Workout.jpg" alt="">
+        
+        <p>It's a total mind-body workout that combines strengthening and stretching poses with deep breathing and meditation or relaxation. There are more than 100 different forms of yoga. Some are fast-paced and intense. Others are gentle and relaxing.</p>
+      
+      </div>
+      <h3 id="text6">HIIT Workout</h3>
+
+      <!--div align image and text inline-->
+      <div id="container5">
+      
+        <img id="img7" src="assets/images/HIIT-Workout.jpg" alt="">
+      
+        <p>A HIIT workout consists of short bouts of intense work lasting anywhere from 10 to 60 seconds, followed immediately by a period of active recovery of the same length or longer. This cycle of hard work and recovery is repeated anywhere from 3 to 10 times, depending on the workout.</p>
+      
+      </div>
+    </div><!--Start of accordion div-->
+  <br><br> 
+  
+  <!--This button will open a dialog box called main-->
+  <button id="join" >join us now</button> <br><br>
+    
+  <!--Div id main
+  content includes tabs 
+  -->
+  <div id="main">
+
+    <!--Start of tebs-->
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">Account Info </a></li>
+        <li><a href="#tabs-2">More about you </a></li>
+        <li><a href="#tabs-3">Plan</a></li>
+      </ul>
+      <div id="tabs-1"><!--tab-1 div starts-->
+        <h3>Create your account in just 3 steps</h3>
+        
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+          Please complete current step before going to next step </p> 
+          
+          <!--First form-->
+          <form id="myForm">
+            <fieldset>
+              <legend>Create Account</legend>
+              <!--All fields are Required feild -->
+              <!--username-->
+              <label for="Username">Username</label>
+              <input type="text" id="Username" name="userName" placeholder="Type your username here" required autofocus><br><br>
+              <!--password-->
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="password"><br><br>
+              <!--phoneno-->
+              <label for="phoneNo">Phone</label>
+              <input type="tel" id="phoneNo" name="phone" placeholder="(317) 000-1111"><br><br>
+              <!--email-->
+              <!-- using Autocomplete -->
+              <label for="email">Email</label>		
+              <input type="email" id="email" name="email" placeholder="student@iu.edu"><br><br>
+              <!--Date-->
+              <label for="Date">Please select your date of Birth</label>
+              <div id="Date"></div>
+              <br><br>       
+               <!-- submit button echos output -->
+              <button id="submit" type="submit">Submit</button>
+              <!-- rest button rests everthing  -->
+              <button id="reset" type="reset">Reset</button>
+            </fieldset>
+          </form>   
+        </div><!--tab-1 div ends -->
+        
+        <div id="tabs-2"><!--tab-2 div starts-->
+          <!--secound form-->
+          <form id="myForm2">
+            <h2>Please select Gender</h2>
+
+            <!-- Using  type="radio" interferes with the UI styling -->
+            <label for="male">Male</label>
+            <input id="male" name="Gender" type="radio" value="Male" checked>
+            
+            <label for="Female">Female</label>
+            <input id="Female" name="Gender" type="radio" value="Female">
+            
+            <label for="Other">Other</label>
+            <input id="Other" name="Gender" type="radio" value="Other">
+            
+            <label for="Unpreferred">Prefer not to answer</label>
+            <input id="Unpreferred" name="Gender" type="radio" value="Prefer not to answer">
+            <br><br>
+
+            <fieldset>
+                <!-- Using  type="checkbox" interferes with the UI styling -->
+                <legend>Please select all the workouts you are intrested in</legend>
+                <label for="Aerobics">Aerobics</label>
+                <input id= "Aerobics" name="Workout" type="checkbox" value="Aerobics">
+                
+                <label for="Cardio">Cardio</label>
+                <input id= "Cardio" name="Workout" type="checkbox" value="Cardio">
+                
+                <label for="Strength-Training">Strength Training</label>
+                <input id= "Strength-Training"  name="Workout" type="checkbox" value="Strength Training">
+                
+                <label for="Yoga">Yoga</label>
+                <input id= "Yoga" name="Workout" type="checkbox" value="Yoga">
+                
+                <label for="HIIT">HIIT Workout</label>
+                <input id= "HIIT" name="Workout" type="checkbox" value="HIIT Workout">
+           
+            </fieldset><br>
+               
+               <!-- Using  type="number" interferes with the UI styling -->
+              <label for="currentWeight">Please enter your Current Weight </label><br>
+              Lbs<input id="currentWeight" name="CurrentWeight"><br><br>
+               
+              <!-- Using  type="number" interferes with the UI styling -->
+              <label for="goalWeight">Please enter your Goal Weight </label><br>
+              Lbs<input id="goalWeight" name="GoalWeight"><br><br>
+               
+              <!-- Slider -->
+              <label for="hours">How many hours do you workout daily?</label>
+              <input type="text" id="hours" name="Hours" readonly>
+              <div id="slider-range"></div><br>
+               
+              <!-- Autocomplete -->
+              <label for="Goal">Explain in few words what is your goal and how you would like to conquer it ?</label><br>
+              <textarea id="Goal" name="goal" placeholder="My goal is" title="autocomplete" rows="5" cols="35"></textarea><br><br>
+              
+              <button id="submit2" type="submit">Submit</button>
+              <button id="reset2" type="reset">Reset</button>
+            
+            </form>
+        </div><!--tab-2 div ends -->
+        <div id="tabs-3"><!--tab-3 div starts-->
+          <!--Thied form-->
+          <form id="myForm3">
+            <label for="Plan1">$20 per month</label>
+            <input id="Plan1" name="Plan" type="radio" value="$20 per month" checked>
+            
+            <label for="Plan2">$160 for 6 months</label>
+            <input id="Plan2" name="Plan" type="radio" value="$160 for 6 months">
+            
+            <label for="Plan3">$320 per year</label>
+            <input id="Plan3" name="Plan" type="radio" value="$320 per year">
+
+            <button id="submit3" type="submit">Submit</button>
+            <button id="reset3" type="reset">Reset</button>
+                   </form>
+        </div><!--tab-3 div ends -->
+</div>
+
+
+
+    
+</div>
+<!-- output area apears only if validation is successful -->
+    <div id="Output" title="confirm"> <br> <h1>Please confirm your details</h1></div>
+    <div id="Output2" title="confirm"> <br> <h1>Please confirm your details</h1></div>
+    <div id="Outputss" title="confirm"> <br> <h1>Please confirm your details</h1></div>
+
+    <!--dialog-messages appears when user prees confirm button -->
+    <div id="dialog-message" title="Congrarts">
+        <h1>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+          Congrats you are now core member of IU GYM 
+        </h1>
+        <h2>
+          <b>Lets move to next step</b>.
+        </h2>
+    </div>
+    <div id="dialog-message2" title="Congrarts">
+      <h1>
+      <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+        Nice to know you more 
+      </h1>
+      <h2>
+        <b>Lets move to next step</b>.
+      </h2>
+  </div>
+  <div id="dialog-message3" title="Congrarts">
+    <h1>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+      Thank you 
+    </h1>
+    <h2>
+      <b>You are all set</b>.
+    </h2>
+</div>
+<!--a div at the buttom of the page that provides contact info-->
+    <div id="bottom">
+      <img id="img8" src="assets/images/coach.png" alt="">
+      <div id="contact">
+        <h1>Contact Us</h1>
+        <h2>Campus Center 156</h2>
+        <h1>317-274-2824</h1>
+        <h2>recsuper@iupui.edu</h2>
+         <h2> Find more at rec.iupui.edu.</h2>
+      </div>
+      <br>
+      <!--link to test page-->
+      This link takes you to<a href="../Test-Page.xlsx">Test-Page</a>
+    </div>
+
+    <!-- all js links-->
+
+  <!-- jQuery UI Library link-->
+  <script src="../../theme/external/jquery/jquery.js"></script>
+    
+  <!-- jQuery UI Library link-->  
+  <script src="../../theme/jquery-ui.js"></script>
+
+  <!-- all js links ends-->
+
+  <!-- Validation Plugins -->   
+  <script src="../../validation/dist/jquery.validate.min.js"></script>
+    
+  <script src="../../validation/dist/additional-methods.js"></script>
+    
+  <script src="../../validation/dist/jquery.validate.js"></script>
+    
+  <script src="../../validation/dist/additional-methods.min.js"></script>
+
+  <!-- Validation Plugins ens  -->
+
+  <!-- Link to Final-Realease.js -->
+  <script src="js/Final-Realease.js"></script>
+</body>
+</html>

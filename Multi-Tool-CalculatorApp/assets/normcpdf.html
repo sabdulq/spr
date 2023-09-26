@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- ... (other meta tags and stylesheets) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+
+    <!-- ... (other meta tags and stylesheets) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dark-mode.css" id="darkModeStyles" />
+    <title>Mobile Calculator</title>
+  </head>
+  <style>
+    body.dark-mode {
+      background-color: #1f1f1f;
+      color: #ffffff;
+    }
+
+    .calculator.dark-mode {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    /* dark-mode.css */
+
+    /* Update background color and text color for buttons */
+    /* Update background color and text color for buttons */
+    .calculator.dark-mode .rest {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+      box-shadow: none; /* Remove the box-shadow */
+    }
+
+    /* Update background color and text color for textarea */
+    .calculator.dark-mode textarea {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+      resize: none;
+      font-size: 1.5rem;
+      background-color: inherit;
+      padding: 0; /* Remove extra padding */
+    }
+
+    /* Update background color and text color for output area */
+    .calculator.dark-mode .output {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+    }
+
+    /* Update other styles as needed */
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: 400% 400%;
+      animation: gradientChange 10s infinite alternate;
+    }
+    @keyframes gradientChange {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Style for the calculator on all screens */
+    .calculator {
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+      color: #fff;
+    }
+    .calculator {
+      background-image: linear-gradient(-45deg, #3b6fa7, #39496e, #2d3a5e);
+      animation: gradientChange 20s infinite alternate;
+    }
+
+    @keyframes gradientChange {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    /* Media query for screens with a minimum width of 768px */
+    @media screen and (min-width: 768px) {
+      .calculator {
+        width: 66%;
+      }
+    }
+
+    /* Media query for screens with a minimum width of 768px */
+    @media screen and (max-width: 768px) {
+      .ti {
+        font-size: small;
+      }
+    }
+
+    .output {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Update the styles for textarea and buttons in both light and dark modes */
+
+    /* Textarea styles */
+    textarea {
+      text-align: right;
+      width: 100%;
+      border: none;
+      resize: none;
+      font-size: 2.5rem;
+      background-color: inherit;
+      padding: 0; /* Remove extra padding */
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+    }
+    button:active {
+      background-color: #a0a0a0; /* Change to your desired pressed button color */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+    }
+
+    /*
+
+    button:hover {
+      background-color: #d0d0d0;
+    }
+    /* Icon styling */
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* #sunIcon,
+    #moonIcon {
+      font-size: 24px;
+      cursor: pointer;
+    } */
+    .im {
+      background-color: orangered;
+    }
+    .ims {
+      background-color: var(--ims-button-color, orangered);
+    }
+    /* Add these styles to improve touch input responsiveness */
+    .calculator {
+      text-align: center;
+      touch-action: manipulation; /* Ensures responsive touch interactions */
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-image: linear-gradient(-45deg, #39496e, #3b6fa7);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .navbar-title {
+      font-size: 1.5rem;
+    }
+
+    .navbar-title a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar-title a:hover {
+      color: #f0f0f0;
+    }
+
+    /* Adjust alignment and padding for the retry button */
+    .calculator .im:nth-last-child(1) {
+      margin-right: 0;
+      padding: 15px;
+    }
+
+    /* Add these styles for touch input responsiveness to the retry button */
+    .calculator .im:nth-last-child(1) {
+      touch-action: manipulation;
+    }
+
+    .buttons {
+      display: none;
+    }
+    .ti {
+      margin: 0 auto;
+      background-color: green;
+    }
+    /* ... (existing CSS code) */
+
+    .output {
+      display: none;
+    }
+    #ic {
+      font-size: xx-large;
+    }
+    .error-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #ff0000;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+    #binomial-output {
+      font-size: xx-large;
+    }
+    #b6 {
+      display: none;
+      margin: 0 auto;
+    }
+    .icons {
+      /* ... (existing styles) */
+      font-size: 2rem; /* Increase the icon size */
+      padding: 20px; /* Add padding around icons */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    /* Style for buttons */
+    button {
+      /* ... (existing styles) */
+      padding: 10px 20px; /* Increase padding for better touch interactions */
+      font-size: 1.2rem;
+      border-radius: 5px;
+    }
+
+    /* Update input field styles */
+    input[type="number"] {
+      /* ... (existing styles) */
+      padding: 10px; /* Add padding to input fields */
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Add styles for Font Awesome icons */
+    .fa-calculator,
+    .fa-redo-alt {
+      margin-right: 5px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.min.js"></script>
+
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="back-button"
+        ><i id="ic" class="fas fa-chevron-left"></i
+      ></a>
+      <span class="navbar-title"><a href="index.html">Back</a> </span>
+    </nav>
+    <br /><br /><br />
+        
+    <div class="calculator">
+      <div class="icons">
+        <i class="fas fa-sun" id="sunIcon"></i>
+  <h3 class="ti" id="Normal-head">Normal Distribution CDF and PDF Calculator</h3>
+        <i class="fas fa-moon" id="moonIcon"></i>
+      </div>
+      <div id="input" class="input">
+                <label for="mean">Mean:</label>
+                <input type="number" id="mean" name="mean"><br><br>
+                <label for="stddev">Standard deviation:</label>
+                <input type="number" id="stddev" name="stddev"><br><br>
+                <label for="xvalue">x value:</label>
+                <input type="number" id="xvalue" name="xvalue"><br><br>
+        <button id="b2" onclick="calculateNormal()">
+          <i class="fas fa-calculator"></i> Calculate
+        </button>
+     <button id="b5" onclick="resetNormal()">
+          <i class="fas fa-redo-alt"></i> Reset
+        </button>
+      </div>
+
+
+   
+<div id="normal-output"></div>
+      <br />
+      
+      <!-- The error box element -->
+      <div class="error-box" id="errorBox"></div>
+      <button id="b6" onclick="resetNormal()">
+        <i class="fas fa-redo-alt"></i> Retry
+      </button><br><br>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      function displayError(message, duration) {
+        var errorBox = document.getElementById("errorBox");
+        errorBox.textContent = message;
+        errorBox.style.display = "block";
+
+        setTimeout(function () {
+          errorBox.style.display = "none";
+        }, duration);
+      }
+function calculateNormal() {
+  const mean = Number(document.getElementById("mean").value);
+  const stddev = Number(document.getElementById("stddev").value);
+  const xvalue = Number(document.getElementById("xvalue").value);
+
+  // Add validation for input values
+  if (isNaN(mean) || isNaN(stddev) || isNaN(xvalue)) {
+    displayError("Invalid input. Please enter valid numbers.", 3000);
+    return;
+  }
+
+  // Additional validation for mean and xvalue
+  if (mean < -1000 || mean > 1000 || xvalue < -1000 || xvalue > 1000) {
+    displayError("Mean and x value must be in the range of -1000 to 1000.", 3000);
+    return;
+  }
+
+  // Additional validation for stddev
+  if (stddev <= 0 || stddev > 1000) {
+    displayError("Standard deviation must be a positive number between 0 and 1000.", 3000);
+    return;
+  }
+
+  // Additional validation for small stddev
+  if (stddev < 0.01) {
+    displayError("Standard deviation is too small. Please enter a larger value.", 3000);
+    return;
+  }
+
+  // Additional validation for large x value
+  if (xvalue > mean + 3 * stddev) {
+    displayError("The x value is significantly larger than the mean. Please verify.", 3000);
+    return;
+  }
+
+  // Additional validation for large negative x value
+  if (xvalue < mean - 3 * stddev) {
+    displayError("The x value is significantly smaller than the mean. Please verify.", 3000);
+    return;
+  }
+
+  const cdf = 0.5 * (1 + math.erf((xvalue - mean) / (stddev * Math.sqrt(2))));
+  const exponent = -0.5 * Math.pow((xvalue - mean) / stddev, 2);
+  const pdf = (1 / (stddev * Math.sqrt(2 * Math.PI))) * Math.exp(exponent);
+
+  const output = `CDF: for x value ${xvalue.toFixed(4)} is ${cdf.toFixed(4)}<br><br>PDF: for x value ${xvalue.toFixed(4)} is ${pdf.toFixed(4)}`;
+  document.getElementById("normal-output").innerHTML = output;
+
+  let strhead = document.getElementById("Normal-head");
+  strhead.style.backgroundColor = "red";
+  strhead.innerHTML = "CDF & PDF Result";
+  let input = document.getElementById("input");
+  input.style.display = "none";
+  let b6 = document.getElementById("b6");
+  b6.style.display = "block";
+}
+
+
+
+// Rest of the code remains the same...
+
+
+  function erf(x) {
+    // Error function approximation using the Abramowitz and Stegun formula
+    // Adapted from https://stackoverflow.com/a/49434653/14294322
+    const sign = x >= 0 ? 1 : -1;
+    x = Math.abs(x);
+    const a1 = 0.254829592;
+    const a2 = -0.284496736;
+    const a3 = 1.421413741;
+    const a4 = -1.453152027;
+    const a5 = 1.061405429;
+    const p = 0.3275911;
+    const t = 1 / (1 + p * x);
+    const y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1 * t * Math.exp(-x * x);
+    return sign * y;
+  }
+  
+  
+  function resetNormal() {
+    let strhead=document.getElementById("Normal-head");
+    strhead.style.backgroundColor="green";
+    strhead.innerHTML="Normal Distribution CDF and PDF Calculator";
+                let input = document.getElementById("input");
+        input.style.display = "block";
+                document.getElementById('normal-output').innerHTML = '';
+mean.value="";
+stddev.value="";
+xvalue.value="";
+    // Reset input and output values
+
+        let b6 = document.getElementById("b6");
+        b6.style.display = "none";
+
+
+
+  }
+
+
+
+
+     
+      // Reference to the dark mode stylesheet
+      const darkModeStylesheet = document.getElementById("darkModeStyles");
+
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        document.querySelector(".calculator").classList.toggle("dark-mode");
+
+        // Toggle background color and text color for rest buttons
+        const restButtons = document.querySelectorAll(".calculator .rest");
+        restButtons.forEach((button) => {
+          button.classList.toggle("dark-mode");
+        });
+
+        // Toggle background color and text color for output area
+        const output = document.querySelector(".calculator .output");
+        output.classList.toggle("dark-mode");
+
+        // Toggle background color for .im and .ims classes
+        const imButtons = document.querySelectorAll(".calculator .im");
+        imButtons.forEach((button) => {
+          button.classList.toggle("dark-mode");
+          if (button.classList.contains("dark-mode")) {
+            button.style.backgroundColor = "#FF9500";
+          } else {
+            button.style.backgroundColor = "orangered";
+          }
+        });
+
+        const imsButton = document.querySelector(".calculator .ims");
+        imsButton.classList.toggle("dark-mode");
+        if (imsButton.classList.contains("dark-mode")) {
+          imsButton.style.setProperty("--ims-button-color", "#FF9500");
+        } else {
+          imsButton.style.setProperty("--ims-button-color", "orangered");
+        }
+      }
+
+      // Event listeners for the sun and moon icons
+      document
+        .getElementById("sunIcon")
+        .addEventListener("click", toggleDarkMode);
+      document
+        .getElementById("moonIcon")
+        .addEventListener("click", toggleDarkMode);
+      $(document).ready(function () {
+        calculateNormal();
+        resetNormal();
+      });
+    </script>
+  </body>
+</html>

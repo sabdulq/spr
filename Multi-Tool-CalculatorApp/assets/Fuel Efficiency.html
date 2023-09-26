@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+      .menu {
+        margin: 0 auto;
+        text-align: center;
+        color: whitesmoke;
+      }
+
+      .calculator {
+        color: white;
+        text-align: center;
+        margin: 20px auto;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+        width: 300px;
+      }
+
+      .input-group {
+        margin-top: 20px;
+      }
+
+      input {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 0 10px 10px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .result {
+        margin-top: 20px;
+      }
+
+      .fa-calculator,
+      .fa-gas-pump {
+        margin-right: 5px;
+      }
+      /* Your existing styles here */
+      .hidden {
+        display: none;
+      }
+      #kmDiv {
+        display: block;
+      }
+      #milesDiv {
+        display: none;
+      }
+      .fold {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+      #retry {
+        display: none;
+        margin: 0 auto;
+      }
+      #background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      #content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="background"></div>
+    <div id="content">
+      <div class="menu">
+        <br />
+        <h1>Chose desired calculation</h1>
+        <button id="kmBtn">Fuel Efficiency in km/L</button>
+        <button id="milesBtn">Fuel Efficiency in miles/gallon</button>
+      </div>
+
+      <div class="calculator hidden" id="kmDiv">
+        <!-- Calculator for km fuel efficiency -->
+        <h1>Fuel Efficiency Calculator in km/L</h1>
+        <div class="input-group">
+          <input type="number" id="kmDistance" placeholder="Distance (km)" />
+          <input type="number" id="kmFuel" placeholder="Fuel Consumed (L)" />
+          <input type="number" id="fuelCost" placeholder="Fuel cost" />
+          <input type="number" id="avgSpeed" placeholder="Average speed km/h" />
+          <button id="kmCalculate">
+            <i class="fas fa-calculator"></i> Calculate
+          </button>
+        </div>
+        <div class="result" id="kmResult">
+          <p>
+            <i class="fas fa-gas-pump"></i> Fuel Efficiency:
+            <span id="kmEfficiency">-</span><span id="km/L"> km/L </span>
+            <button type="reset" id="retry">
+              <i class="fas fa-redo-alt"></i>Retry</button
+            ><br />
+          </p>
+        </div>
+      </div>
+
+      <div class="calculator hidden" id="milesDiv">
+        <!-- Calculator for miles fuel efficiency -->
+        <h1>Fuel Efficiency Calculator</h1>
+        <div class="input-group">
+          <input
+            type="number"
+            id="milesDistance"
+            placeholder="Distance (miles)"
+          />
+          <input
+            type="number"
+            id="milesFuel"
+            placeholder="Fuel Consumed (gallons)"
+          />
+          <button id="milesCalculate">
+            <i class="fas fa-calculator"></i> Calculate
+          </button>
+        </div>
+        <div class="result" id="milesResult">
+          <p>
+            <i class="fas fa-gas-pump"></i> Fuel Efficiency:
+            <span id="milesEfficiency">-</span> miles/gallon
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.2,
+        2000
+      );
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById("background").appendChild(renderer.domElement);
+      document.getElementById("background").style.zIndex = -1; // Set the z-index
+
+      const geometry = new THREE.SphereGeometry(0.05, 32, 32);
+      const material = new THREE.MeshBasicMaterial({ color: 0xff8800 });
+      const fuelDrops = [];
+
+      function createFuelDrop() {
+        const fuelDrop = new THREE.Mesh(geometry, material);
+        fuelDrop.position.set(
+          Math.random() * 10 - 5,
+          10,
+          Math.random() * 10 - 5
+        );
+        scene.add(fuelDrop);
+        fuelDrops.push(fuelDrop);
+      }
+
+      function animateFuelDrops() {
+        fuelDrops.forEach((fuelDrop) => {
+          fuelDrop.position.y -= 0.05;
+          if (fuelDrop.position.y < -5) {
+            fuelDrop.position.set(
+              Math.random() * 10 - 5,
+              10,
+              Math.random() * 10 - 5
+            );
+          }
+        });
+      }
+
+      camera.position.z = 5;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        animateFuelDrops();
+        renderer.render(scene, camera);
+      }
+
+      function randomDropDelay() {
+        setTimeout(() => {
+          createFuelDrop();
+          randomDropDelay();
+        }, Math.random() * 1000); // Adjust the delay range as needed
+      }
+
+      randomDropDelay();
+      animate();
+
+      const kmBtn = document.getElementById("kmBtn");
+      const milesBtn = document.getElementById("milesBtn");
+      const kmDiv = document.getElementById("kmDiv");
+      const milesDiv = document.getElementById("milesDiv");
+
+      kmBtn.addEventListener("click", () => {
+        milesDiv.classList.add("fold");
+        setTimeout(() => {
+          milesDiv.style.display = "none";
+          kmDiv.style.display = "block";
+          kmDiv.classList.remove("fold");
+        }, 300);
+      });
+
+      milesBtn.addEventListener("click", () => {
+        kmDiv.classList.add("fold");
+        setTimeout(() => {
+          kmDiv.style.display = "none";
+          milesDiv.style.display = "block";
+          milesDiv.classList.remove("fold");
+        }, 300);
+      });
+
+      // Your existing JavaScript code
+
+      // Your existing code
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const kmCalculateButton = document.getElementById("kmCalculate");
+        kmCalculateButton.addEventListener("click", calculateKmEfficiency);
+
+        const reset = document.getElementById("retry");
+        reset.addEventListener("click", retry);
+
+        const milesCalculateButton = document.getElementById("milesCalculate");
+        milesCalculateButton.addEventListener(
+          "click",
+          calculateMilesEfficiency
+        );
+      });
+
+      function calculateKmEfficiency() {
+        const distance = parseFloat(
+          document.getElementById("kmDistance").value
+        );
+        const fuel = parseFloat(document.getElementById("kmFuel").value);
+
+        if (isNaN(distance) || isNaN(fuel) || fuel <= 0) {
+          showKmError("Please enter valid values.");
+          return;
+        }
+
+        const efficiency = distance / fuel;
+        const fuelCost = parseFloat(document.getElementById("fuelCost").value);
+        const costPer100km = (100 / efficiency) * fuelCost;
+        const avgSpeed = parseFloat(document.getElementById("avgSpeed").value);
+        const tripDuration500km = distance / avgSpeed;
+
+        displayKmResult(efficiency, costPer100km, tripDuration500km);
+      }
+
+      function displayKmResult(efficiency, costPer100km, tripDuration500km) {
+        const resultElement = document.getElementById("kmEfficiency");
+        var kmL = (document.getElementById("km/L").innerHTML = "");
+        resultElement.innerHTML = "";
+        resultElement.innerHTML =
+          efficiency.toFixed(2) +
+          " km/L" +
+          "<br><br>Cost per 100 km: $" +
+          costPer100km.toFixed(2) +
+          "<br><br>Estimated trip duration: " +
+          tripDuration500km.toFixed(1) +
+          " hours <br><br>";
+        const reset = (document.getElementById("retry").style.display =
+          "block");
+        renderer.setSize(window.innerWidth, window.innerHeight * 1.5);
+      }
+
+      function showKmError(message) {
+        const resultElement = document.getElementById("kmEfficiency");
+        resultElement.innerHTML =
+          '<i class="fas fa-exclamation-triangle"></i> ' + message;
+        setTimeout(() => {
+          resultElement.innerHTML =
+            '<i class="fas fa-gas-pump"></i> Fuel Efficiency: <span id="kmEfficiency">-</span> km/L';
+        }, 5000);
+      }
+
+      function retry() {
+        const distance = document.getElementById("kmDistance");
+        const fuel = document.getElementById("kmFuel");
+        const fuelCost = document.getElementById("fuelCost");
+        const avgSpeed = document.getElementById("avgSpeed");
+        distance.value = "";
+        fuel.value = "";
+        fuelCost.value = "";
+        avgSpeed.value = "";
+        const resultElement = document.getElementById("kmEfficiency");
+        resultElement.innerHTML = "";
+        const reset = (document.getElementById("retry").style.display = "none");
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+      // Rest of your code (calculateMilesEfficiency, displayMilesResult, showMilesError)
+
+      function calculateMilesEfficiency() {
+        const distance = parseFloat(
+          document.getElementById("milesDistance").value
+        );
+        const fuel = parseFloat(document.getElementById("milesFuel").value);
+
+        if (isNaN(distance) || isNaN(fuel) || fuel <= 0) {
+          showMilesError("Please enter valid values.");
+          return;
+        }
+
+        const efficiency = distance / fuel;
+        displayMilesResult(efficiency.toFixed(2));
+      }
+
+      function displayMilesResult(efficiency) {
+        const resultElement = document.getElementById("milesEfficiency");
+        resultElement.textContent = efficiency + " miles/gallon";
+      }
+
+      function showMilesError(message) {
+        const resultElement = document.getElementById("milesEfficiency");
+        resultElement.innerHTML =
+          '<i class="fas fa-exclamation-triangle"></i> ' + message;
+        setTimeout(() => {
+          resultElement.innerHTML =
+            '<i class="fas fa-gas-pump"></i> Fuel Efficiency: <span id="milesEfficiency">-</span> miles/gallon';
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>

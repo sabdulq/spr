@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- ... (other meta tags and stylesheets) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+
+    <!-- ... (other meta tags and stylesheets) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dark-mode.css" id="darkModeStyles" />
+
+    <title>Mobile Calculator</title>
+  </head>
+
+  <style>
+    body.dark-mode {
+      background-color: #1f1f1f;
+      color: #ffffff;
+    }
+
+    .calculator.dark-mode {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    /* dark-mode.css */
+
+    /* Update background color and text color for buttons */
+    /* Update background color and text color for buttons */
+    .calculator.dark-mode .rest {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+      box-shadow: none; /* Remove the box-shadow */
+    }
+
+    /* Update background color and text color for textarea */
+    .calculator.dark-mode textarea {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+      resize: none;
+      font-size: 2rem;
+      background-color: inherit;
+      padding: 0; /* Remove extra padding */
+    }
+
+    /* Update background color and text color for output area */
+    .calculator.dark-mode .output {
+      background-image: linear-gradient(to bottom, #292929, #222222);
+      color: #ffffff;
+      border: none; /* Remove the border */
+    }
+
+    /* Update other styles as needed */
+
+body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #e0e0e0, #f0f0f0);
+      background-size: 400% 400%;
+      animation: gradientChange 10s infinite alternate;
+    }
+
+    @keyframes gradientChange {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .calculator {
+      margin: 0 auto;
+      width: 80%;
+      height: 60%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+    .calculator {
+      background-image: linear-gradient(-45deg, #3b6fa7, #39496e, #2d3a5e);
+      animation: gradientChange 20s infinite alternate;
+    }
+
+    @keyframes gradientChange {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+    
+    /* Particle container */
+    .particle-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+
+    .output {
+      padding: 1px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Update the styles for textarea and buttons in both light and dark modes */
+
+    /* Textarea styles */
+    textarea {
+      text-align: right;
+      width: 100%;
+      border: none;
+      resize: none;
+      color: #ffffff;
+      font-size: 2rem;
+      background-color: inherit;
+      padding: 0; /* Remove extra padding */
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .calculator button {
+      padding: 20px;
+      font-size: 1.3rem;
+      border: none;
+      background-color: #4b7bec;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.3s, background-color 0.3s;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      outline: none;
+    }
+
+    /* Button hover effect */
+    .calculator button:hover {
+      background-color: #3b6fa7;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Button active effect */
+    .calculator button:active {
+      background-color: #3360a2;
+      transform: scale(0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Larger icon size */
+    .calculator i {
+      font-size: 2rem;
+    }
+
+    /* Background gradient */
+    .calculator {
+      background-image: linear-gradient(to bottom right, #39496e, #2d3a5e);
+    }
+    /* Icon styling */
+    .icons {
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+    #sunIcon,
+    #moonIcon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .im {
+      background-color: orangered;
+    }
+    .ims {
+      background-color: var(--ims-button-color, orangered);
+    }
+    /* Add these styles to improve touch input responsiveness */
+    .calculator {
+      touch-action: manipulation; /* Ensures responsive touch interactions */
+    }
+
+nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-image: linear-gradient(-45deg, #39496e, #3b6fa7);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .navbar-title {
+      font-size: 1.5rem;
+    }
+
+    .navbar-title a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar-title a:hover {
+      color: #f0f0f0;
+    }
+
+    /* Adjust alignment and padding for the retry button */
+    .calculator .im:nth-last-child(1) {
+      margin-right: 0;
+      padding: 15px;
+    }
+
+    /* Add these styles for touch input responsiveness to the retry button */
+    .calculator .im:nth-last-child(1) {
+      touch-action: manipulation;
+    }
+    .output textarea,
+    .calculator button {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    #ic{
+      font-size: xx-large;
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap">
+</head>
+
+  <body>
+<nav>
+    <a href="index.html" class="back-button"><i id="ic" class="fas fa-chevron-left"></i></a>
+    <span class="navbar-title"><a href="index.html">Back</a></span>
+  </nav>
+    <br /><br /><br /><br />
+
+    <div class="calculator">
+      <div class="particle-container"></div>
+      <div class="icons">
+        <i class="fas fa-sun" id="sunIcon"></i>
+        <i class="fas fa-moon" id="moonIcon"></i>
+      </div>
+      <div class="output">
+        <textarea id="result" rows="3" placeholder="0"></textarea>
+      </div>
+      <div class="buttons">
+        <button onclick="clearAll()">AC</button>
+        <button onclick="removeLast()">←</button>
+        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')">×</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('/')">÷</button>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button class="ims" onclick="calculate()">=</button>
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="appendValue('(')">(</button>
+        <button onclick="appendValue(')')">)</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Add this code to your existing JavaScript
+
+      // Update this part of your existing JavaScript code
+      document
+        .getElementById("result")
+        .addEventListener("input", function (event) {
+          expression = event.target.value;
+        });
+
+      let expression = "";
+      let debounceTimeout;
+
+      function debounce(func, delay) {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(func, delay);
+      }
+
+      function appendValue(value) {
+        const resultTextarea = document.getElementById("result");
+        const startPos = resultTextarea.selectionStart;
+        const endPos = resultTextarea.selectionEnd;
+
+        // Insert the new value at the current cursor position
+        expression =
+          expression.slice(0, startPos) + value + expression.slice(endPos);
+
+        debounce(updateOutput, 100);
+      }
+
+      function removeLast() {
+        const resultTextarea = document.getElementById("result");
+        const startPos = resultTextarea.selectionStart;
+        const endPos = resultTextarea.selectionEnd;
+
+        // Remove the character(s) at the current cursor position
+        expression =
+          expression.slice(0, startPos - 1) + expression.slice(endPos);
+
+        // Adjust cursor position after removing the character(s)
+        resultTextarea.selectionStart = startPos - 1;
+        resultTextarea.selectionEnd = startPos - 1;
+
+        updateOutput();
+      }
+
+      function clearAll() {
+        expression = "";
+        updateOutput();
+      }
+
+      function isValidInput(value) {
+        // Add validation logic here
+        const validCharacters = /[0-9+\-*/.=]/;
+        return validCharacters.test(value);
+      }
+
+      function updateOutput() {
+        document.getElementById("result").value = expression;
+      }
+
+      function calculate() {
+        try {
+          // Sanitize and validate expression
+          if (!isValidExpression(expression)) {
+            expression = "Invalid Input";
+          } else {
+            const result = eval(expression);
+            // Round result to 8 decimal places for floating-point precision
+            expression = parseFloat(result.toFixed(8)).toString();
+          }
+          updateOutput();
+        } catch (error) {
+          expression = "Error";
+          updateOutput();
+        }
+      }
+
+      function isValidExpression(expression) {
+        // Add more validation logic if needed
+        // For example, prevent consecutive operators or other invalid sequences
+        return true;
+      }
+      // ... (rest of the code)
+
+      function updateOutput() {
+        document.getElementById("result").value = expression;
+      }
+
+      // Add these lines to your existing JavaScript code
+
+      // Reference to the dark mode stylesheet
+      const darkModeStylesheet = document.getElementById("darkModeStyles");
+
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        document.querySelector(".calculator").classList.toggle("dark-mode");
+
+        // Toggle background color and text color for rest buttons
+        const restButtons = document.querySelectorAll(".calculator .rest");
+        restButtons.forEach((button) => {
+          button.classList.toggle("dark-mode");
+        });
+
+        // Toggle background color and text color for output area
+        const output = document.querySelector(".calculator .output");
+        output.classList.toggle("dark-mode");
+
+        // Toggle background color for .im and .ims classes
+        const imButtons = document.querySelectorAll(".calculator .im");
+        imButtons.forEach((button) => {
+          button.classList.toggle("dark-mode");
+          if (button.classList.contains("dark-mode")) {
+            button.style.backgroundColor = "#FF9500";
+          } else {
+            button.style.backgroundColor = "orangered";
+          }
+        });
+
+        const imsButton = document.querySelector(".calculator .ims");
+        imsButton.classList.toggle("dark-mode");
+        if (imsButton.classList.contains("dark-mode")) {
+          imsButton.style.setProperty("--ims-button-color", "#FF9500");
+        } else {
+          imsButton.style.setProperty("--ims-button-color", "orangered");
+        }
+      }
+
+      // Event listeners for the sun and moon icons
+      document
+        .getElementById("sunIcon")
+        .addEventListener("click", toggleDarkMode);
+      document
+        .getElementById("moonIcon")
+        .addEventListener("click", toggleDarkMode);
+    </script>
+  </body>
+</html>

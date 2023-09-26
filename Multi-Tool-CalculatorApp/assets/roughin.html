@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: aliceblue;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  
+  overflow: scroll;
+  margin-right: -18px;
+}
+
+      nav {
+        font-size: x-large;
+        top: 0;
+        margin-top: 0;
+        background-color: orangered;
+        color: black;
+        display: block;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .title {
+        text-align: center;
+        margin: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .card {
+        background: linear-gradient(to bottom right, #ff9500, #ff5e3a);
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+        width: calc(33.33% - 20px);
+        text-align: center;
+        color: white;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .card i {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+      .category-title {
+        font-size: x-large;
+        text-align: center;
+        margin-top: 30px;
+      }
+@media (min-width: 768px) {
+
+  .category-title {
+    width: 100%; 
+  }
+  
+  .container {
+    flex-direction: column;
+  }
+  
+  .card {
+    width: 100%;
+  }
+
+}
+/* ... (existing styles) ... */
+
+/* Unique search bar design */
+.search-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#search-input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: width 0.3s;
+}
+
+/* Additional styles for search bar */
+/* ... */
+
+      
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h1 class="title">Ultimate Calculator</h1>
+    </nav>
+
+    <br />
+    <h1>Choose from the following</h1>
+<div class="search-container">
+  <i class="fas fa-search"></i>
+  <input
+    type="text"
+    id="search-input"
+    placeholder="Search..."
+  />
+</div>
+    <div class="container">
+      <h2 class="category-title">Math Calculations:</h2>
+      <br /><br />
+      <div class="card">
+        <a href="geralcalc.html">
+          <i class="fas fa-calculator"></i>
+          <p>Basic Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="SDC.html">
+          <i class="fas fa-chart-line"></i>
+          <p>Standard Deviation Calculator</p>
+        </a>
+      </div>
+      <h2 class="category-title">Statistical Distributions:</h2>
+      <br /><br />
+      <div class="card">
+        <a href="biocpdf.html">
+          <i class="fas fa-chart-bar"></i>
+          <p>Binomial Distribution CDF and PDF</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-chart-bar"></i>
+          <p>Chi-square Distribution</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-chart-bar"></i>
+          <p>Normal Distribution CDF and PDF</p>
+        </a>
+      </div>
+
+      <h2 class="category-title">Geometry and Measurements:</h2>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-ruler-combined"></i>
+          <p>Area and Perimeter Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-square-root-alt"></i>
+          <p>Pythagorean Theorem</p>
+        </a>
+      </div>
+      <h2 class="category-title">Calculators for Various Domains:</h2>
+      <br /><br />
+      <h3 class="category-title">Financial Calculators:</h3>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-battery-full"></i>
+          <p>Battery Life Estimator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-dollar-sign"></i>
+          <p>Currency Converter</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-gas-pump"></i>
+          <p>Fuel Efficiency Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Shopping Discount Calculator</p>
+        </a>
+      </div>
+      <h3 class="category-title">Health and Fitness Calculators:</h3>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-weight"></i>
+          <p>BMI Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-heartbeat"></i>
+          <p>Heart Rate Zone Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-tint"></i>
+          <p>Water Intake Calculator</p>
+        </a>
+      </div>
+
+      <h3 class="category-title">Time and Date Calculators:</h3>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-calendar-alt"></i>
+          <p>Age Calculator</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-clock"></i>
+          <p>Time Zone Converter</p>
+        </a>
+      </div>
+      <h3 class="category-title">Everyday Calculators:</h3>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-coffee"></i>
+          <p>Coffee Consumption Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-percent"></i>
+          <p>Percentage Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-pizza-slice"></i>
+          <p>Pizza Slice Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-temperature-high"></i>
+          <p>Temperature Converter</p>
+        </a>
+      </div>
+      <h3 class="category-title">Scientific and Technical Calculators:</h3>
+      <br /><br />
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-mortar-pestle"></i>
+          <p>Medicine Dosage Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-microscope"></i>
+          <p>Magnification Calculator</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-satellite-dish"></i>
+          <p>Radioactive Decay Calculator</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <a href="../Course Project Final/result.html">
+          <i class="fas fa-random"></i>
+          <p>Random Number Generator</p>
+        </a>
+      </div>
+        <h3 class="category-title">Communication and Travel Calculators:</h3>
+        <br /><br />
+        <div class="card">
+          <a href="../Course Project Final/result.html">
+            <i class="fas fa-globe-americas"></i>
+            <p>International Dialing Code Converter</p>
+          </a>
+        </div>
+        <div class="card">
+          <a href="../Course Project Final/result.html">
+            <i class="fas fa-shoe-prints"></i>
+            <p>Walking Distance Calculator</p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <script>
+                // Retrieve the input field and card elements
+const searchInput = document.getElementById("search-input");
+const categoryTitles = document.querySelectorAll(".category-title");
+const cards = document.querySelectorAll(".card");
+
+// Listen for input event on the search input
+searchInput.addEventListener("input", function () {
+  const searchTerm = searchInput.value.toLowerCase();
+
+  cards.forEach((card) => {
+    const cardText = card.querySelector("p").innerText.toLowerCase();
+    if (cardText.includes(searchTerm)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  categoryTitles.forEach((title) => {
+    title.style.display = "none";
+  });
+});
+
+// Clear search input and show all cards and titles when input is empty
+searchInput.addEventListener("blur", function () {
+  if (!searchInput.value) {
+    cards.forEach((card) => {
+      card.style.display = "block";
+    });
+
+    categoryTitles.forEach((title) => {
+      title.style.display = "block";
+    });
+  }
+});
+
+    </script>
+  </body>
+</html>

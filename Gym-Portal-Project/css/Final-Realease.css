@@ -1,0 +1,205 @@
+/*Images style */
+#img1{
+    position: absolute;
+    top:0%;
+    left: 35%;
+    width: 200px;
+    height: 110px;
+    object-fit: cover;
+    background-color: transparent;
+    background: transparent;
+}
+#img2{
+    position: absolute;
+    top:6%;
+    left: 45%;
+    width: 200px;
+    height: 110px;
+    object-fit: cover;
+    background-color: transparent;
+    background: transparent;
+}
+#img3{
+    max-width: 200px;
+    max-height: 210px;
+    margin-right: 20px;
+
+}
+#img4{
+    max-width: 200px;
+    max-height: 210px;
+    margin-right: 20px;
+
+}
+#img5{
+    max-width: 200px;
+    max-height: 210px;
+    margin-right: 20px;
+
+}
+#img6{
+    max-width: 200px;
+    max-height: 210px;
+    margin-right: 20px;
+
+}
+#img7{
+    max-width: 200px;
+    max-height: 210px;
+    margin-right: 20px;
+
+}
+#img8{
+    max-width: 500px;
+    max-height: 250px;
+    margin-right: 20px;
+
+}
+/*End of Images style */
+
+/*Divs for accordation */
+#container {
+    display:flex;
+    text-align:center;
+}
+#container2 {
+    display:flex;
+    text-align:center;
+}
+#container3 {
+    display:flex;
+    text-align:center;
+}
+#container4 {
+    display:flex;
+    text-align:center;
+}
+#container5 {
+    display:flex;
+    text-align:center;
+}
+#text2{
+    width: 400px;
+    height: 30px;
+
+}
+#text3{
+    width: 400px;
+    height: 30px;
+    text-align: center;
+}#text4{
+    width: 400px;
+    height: 30px;
+    text-align: center;
+}#text5{
+    width: 400px;
+    height: 30px;
+    text-align: center;
+}
+#text6{
+    width: 400px;
+    height: 30px;
+    text-align: center;
+}
+/*End of Divs for accordation */
+
+/*Divs related to pageTop divs */
+#pageTop{
+    height: 300px;
+    width: 100%;
+    color: blue;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#video{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+#h1{
+    position: absolute;
+    top:5%;
+    left: 40%;
+
+}
+#text{
+    position: absolute;
+    width: 500px;
+    top:50%;
+    left: 2%;
+    color: white;
+
+
+}
+#p1{
+    color:black;
+    position: absolute;
+    top:90%;
+    left: 60%;
+}
+/*Divs related to pageTop divs  ends*/
+body{
+    text-align: center;
+}
+
+/*Div main*/
+#main{
+    width: 600px;
+    height: 700px;
+    margin: 0 auto;
+    display: none;
+}/*Divs main ends*/
+
+/*Div bottoum start*/
+#bottom{
+    width: 100%;
+    background-color:black;
+    color:yellowgreen;
+}/*Div bottom  ends*/
+
+/*autocomplete index change*/
+.ui-autocomplete
+        {
+            cursor:default;
+            z-index:4000 !important    	
+        }
+
+/*Div contact  starts*/
+#contact{
+    max-width: 500px;
+    height:auto ;
+    right: 0%;
+    display: inline-block;
+}
+/*Div contact  ends*/
+#myForm label.error {
+    margin-left: 5px;		
+    color: red;
+    font-weight: bold;
+}
+#myForm2 label.error {
+    margin-left: 5px;		
+    color: red;
+    font-weight: bold;
+}
+#myForm3 label.error {
+    margin-left: 5px;		
+    color: red;
+    font-weight: bold;
+}
+
+input{
+    background-color: aqua;
+}
+
+.error input {
+    background-color: tomato;
+}

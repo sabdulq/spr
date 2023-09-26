@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiple Nav Bars</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #f4f4f4, #e6e6e6);
+        color: #333;
+      }
+
+      .ovr_container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      #ovr {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      #ovr img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .data-details,
+      .purpose,
+      .motive,
+      .expectations {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .data-details h2,
+      .purpose h2,
+      .motive h2,
+      .expectations h2 {
+        margin-top: 0;
+        border-bottom: 2px solid #61dafb;
+        padding-bottom: 10px;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background-color: #61dafb;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .download-btn:hover {
+        background-color: #4fa8d4;
+      }
+
+      /* Your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        color: black;
+      }
+
+      .navbar {
+        top: 0;
+        margin-top: 0;
+        background-color: #ff6347;
+        color: #fff;
+        display: flex;
+        padding: 10px;
+      }
+
+      .navbar a {
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+
+      .navbar a:hover {
+        background-color: #8cafcd;
+      }
+
+      .content {
+        margin-top: 20px;
+      }
+
+      .second-navbar {
+        background-color: #ff6347;
+        display: flex;
+        padding: 10px;
+      }
+
+      .second-navbar a {
+        color: white;
+        padding: 8px 16px;
+        text-decoration-line: none;
+      }
+
+      .second-navbar a.active {
+        background-color: #bfbfbf;
+        color: #fe3c3c;
+        text-decoration-line: underline;
+      }
+      .page {
+        display: none;
+      }
+
+      .page.show {
+        display: block;
+      }
+
+      .f {
+        display: block;
+        background-color: #f7f7f7;
+        color: #f00;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+      }
+      /* .container {  
+        width: 700px;
+        height: 100px;
+        background-color: #000;
+} */
+
+      .window {
+        height: 350px;
+        width: 850px;
+        background-color: #000;
+        border: 2px solid #f7f7f7;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: -19px 19px 28px #5a5a5a, 19px -19px 28px #0c0c0c;
+        padding: 5px;
+      }
+
+      .window-title {
+        height: 30px;
+        background-color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      .window-title p {
+        color: #fff;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      .window-buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .window-button {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        margin: 5px;
+        transition: background-color 0.2s ease;
+      }
+
+      .window-button.close {
+        background-color: #f00;
+      }
+
+      .window-button.close:hover {
+        background-color: rgb(182, 2, 2);
+        cursor: pointer;
+      }
+
+      .window-button.reduce {
+        background-color: #ff0;
+      }
+
+      .window-button.reduce:hover {
+        background-color: rgb(172, 172, 4);
+        cursor: pointer;
+      }
+
+      .window-button.fullscreen {
+        background-color: #0f0;
+      }
+
+      .window-button.fullscreen:hover {
+        background-color: rgb(7, 159, 7);
+        cursor: pointer;
+      }
+
+      .window-button:focus {
+        outline: none;
+      }
+
+      .console {
+        width: 100%;
+        height: calc(100% - 30px);
+        background-color: #000;
+        color: #fff;
+        overflow: auto;
+      }
+
+      .console pre {
+        margin: 0;
+        padding: 5px;
+        font-size: 15px;
+      }
+
+      .console pre Overview {
+        color: #0f0;
+        outline: none;
+      }
+
+      .console::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .console::-webkit-scrollbar-track {
+        background-color: #333;
+      }
+
+      .console::-webkit-scrollbar-thumb {
+        background-color: #666;
+        border-radius: 10px;
+        border: 2px solid #333;
+      }
+
+      .console::-webkit-scrollbar-thumb:hover {
+        background-color: #999;
+      }
+      #case-study-page {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+      }
+      #snav {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      nav {
+        margin-bottom: 0;
+        margin: 0;
+        padding: 0;
+      }
+      #f {
+        margin: 0;
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .second-navbar {
+        margin-bottom: 0;
+      }
+      .f h1 {
+        margin: 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .us {
+        background: linear-gradient(to right, #20232a, #333);
+        color: #61dafb;
+        text-align: center;
+        padding: 20px 0;
+        border-radius: 5px;
+      }
+
+      .image-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .image-card {
+        flex: 1;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      .image-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .image-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      footer {
+        margin-top: 50px;
+        padding: 30px;
+        background: linear-gradient(to right, #20232a, #333);
+        color: #61dafb;
+        border-radius: 5px;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+    <link rel="stylesheet" href="codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="codemirror/theme/dracula.css" />
+    <link rel="stylesheet" href="prism/prism.css" />
+  </head>
+  <body onload="initializePage(); preloadCSVFile();">
+    <div class="f" id="f">
+      <h1 title>Title:US Crime Reporting Patterns- A Case Study</h1>
+    </div>
+    <nav id="snav" class="navbar second-navbar">
+      <a href="#" id="Overview-link" onclick="switchPage('Overview')"
+        >Overview</a
+      >
+      <a
+        href="#"
+        id="case-study-link"
+        class="active"
+        onclick="switchPage('case-study')"
+        >Case Study</a
+      >
+      <a href="#" id="dashboard-link" onclick="switchPage('dashboard')"
+        >Dashboard</a
+      >
+    </nav>
+
+    <div id="case-study-page" class="page">
+      <section>
+        <hr />
+        <h2>Case Study: An Analysis of US Crime Reporting Patterns</h2>
+        <hr />
+      </section>
+
+      <section>
+        <h3>Purpose:</h3>
+        <p>
+          The primary objective of this case study is to scrutinize the patterns
+          and trends inherent in a dataset of US crime reports. By delving into
+          the intricacies of the data, we aim to glean insights into the
+          temporal, geographical, and source-related nuances of crime reporting.
+          Understanding these dimensions can shed light on potential hotspots,
+          temporal patterns, and the diversity of sources that disseminate such
+          reports.
+        </p>
+        <hr />
+      </section>
+
+      <section>
+        <h3>Questions Addressed:</h3>
+        <ol>
+          <li>How has the frequency of crime reporting varied over time?</li>
+          <li>
+            Which geographical locations (cities and states) emerge as focal
+            points in the reporting landscape?
+          </li>
+          <li>At what times of the day do crime reports tend to peak?</li>
+          <li>
+            How diverse is the landscape of organizations reporting on these
+            incidents?
+          </li>
+        </ol>
+        <hr />
+      </section>
+
+      <section>
+        <h3>Findings:</h3>
+        <h4>Temporal Patterns in Crime Reporting:</h4>
+        <p>
+          Our investigation into the temporal distribution of reports unveiled
+          distinct trends over time. Periodic spikes suggest days with a higher
+          concentration of reports. The reasons for these anomalies, whether
+          they correlate with specific events or particular types of incidents,
+          warrant further exploration.
+        </p>
+
+        <h4>Geographical Insights in Crime Reporting:</h4>
+        <p>
+          A geographical breakdown of the data paints a vivid picture of the
+          locales that are more frequently spotlighted in the reports. New York,
+          both as a city and a state, stands out as a predominant hub of crime
+          reporting. Its prominence is followed by cities like Los Angeles and
+          Chicago, and states such as California and Texas. This geographical
+          concentration intimates potential hotspots or regions where particular
+          types of crimes might be more prevalent.
+        </p>
+
+        <h4>Time-Based Analysis of Reports:</h4>
+        <p>
+          Analyzing the data through the lens of time revealed discernible
+          patterns. Reports tend to escalate during the late morning, peaking
+          around mid-afternoon. This afternoon zenith suggests a period of
+          heightened activity in crime reporting, although the reasons—whether
+          they relate to the actual occurrence of incidents or the operational
+          hours of reporting agencies—remain speculative.
+        </p>
+
+        <h4>Diverse Landscape of Reporting Organizations:</h4>
+        <p>
+          While several organizations contribute to the dataset, a few stand out
+          in terms of their volume of reports. Leading the pack are
+          organizations like HuffPost, NBC News, and ABC News. However, the data
+          also showcases contributions from a diverse array of over two thousand
+          unique organizations, underscoring the breadth of sources involved in
+          crime reporting.
+        </p>
+        <hr />
+      </section>
+
+      <section>
+        <h3>Conclusion:</h3>
+        <p>
+          This analysis has illuminated several facets of US crime reporting.
+          The temporal trends, geographical concentrations, hourly patterns, and
+          diversity of reporting sources all contribute to a multifaceted
+          picture of how crime incidents are reported and disseminated. Such
+          insights are invaluable for stakeholders ranging from law enforcement
+          agencies to policymakers and researchers. By understanding these
+          patterns, strategies can be devised to better respond to incidents,
+          allocate resources, and inform the public. Future research could
+          further dissect the reasons behind the observed patterns and delve
+          deeper into the content of the reports to categorize and understand
+          the nature of the crimes being reported.
+        </p>
+      </section>
+    </div>
+
+    <div id="dashboard-page" class="page">
+      <div class="container">
+        <header class="us">
+          <h1>US Crime Reporting Patterns Dashboard</h1>
+        </header>
+
+        <div class="image-section">
+          <div class="image-card">
+            <img
+              src="images/Picture1.jpg"
+              alt="Temporal Patterns in Crime Reporting"
+            />
+            <p>Temporal Patterns in Crime Reporting</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="images/Picture3.jpg"
+              alt="Geographical Insights in Crime Reporting"
+            />
+            <p>Geographical Insights in Crime Reporting</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="images/Picture4.jpg"
+              alt="Time-Based Analysis of Reports"
+            />
+            <p>Time-Based Analysis of Reports</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="images/Picture5.jpg"
+              alt="Diverse Landscape of Reporting Organizations"
+            />
+            <p>Diverse Landscape of Reporting Organizations</p>
+          </div>
+          <div class="image-card">
+            <img
+              src="images/Picture6.jpg"
+              alt="Comparison of Crime Rates Across Cities"
+            />
+            <p>Comparison of Crime Rates Across Cities</p>
+          </div>
+        </div>
+
+        <footer>
+          <h2>Conclusion</h2>
+          <p>
+            This analysis has illuminated several facets of US crime reporting.
+            The temporal trends, geographical concentrations, hourly patterns,
+            and diversity of reporting sources all contribute to a multifaceted
+            picture of how crime incidents are reported and disseminated. Such
+            insights are invaluable for stakeholders ranging from law
+            enforcement agencies to policymakers and researchers. By
+            understanding these patterns, strategies can be devised to better
+            respond to incidents, allocate resources, and inform the public.
+            Future research could further dissect the reasons behind the
+            observed patterns and delve deeper into the content of the reports
+            to categorize and understand the nature of the crimes being
+            reported.
+          </p>
+        </footer>
+        <div id="imageModal" class="modal">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <img class="modal-content" id="img01" />
+          <div id="caption"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Overview-page" class="page">
+      <div class="ovr_container">
+        <header id="ovr">
+          <h1>US Crime Reporting Patterns</h1>
+          <img src="images/CSI.jpg" alt="Cover Photo" />
+        </header>
+
+        <div class="data-details">
+          <h2>Data Details</h2>
+          <!-- Column names and row count will be filled in programmatically -->
+          <p><strong>Columns:</strong> <span id="columns"></span></p>
+          <p><strong>Row Count:</strong> <span id="rowCount"></span></p>
+          <a href="US_Crime_Data.csv" download class="download-btn"
+            >Download CSV Data File</a
+          >
+        </div>
+
+        <div class="purpose">
+          <h2>Purpose</h2>
+          <p>
+            The primary objective of this case study is to scrutinize the
+            patterns and trends inherent in a dataset of US crime reports. We
+            aim to glean insights into the temporal, geographical, and
+            source-related nuances of crime reporting.
+          </p>
+        </div>
+
+        <div class="motive">
+          <h2>Motive</h2>
+          <p>
+            By understanding the dimensions of crime reporting, we can shed
+            light on potential hotspots, temporal patterns, and the diversity of
+            sources that disseminate such reports. Such insights can influence
+            decision-making for stakeholders.
+          </p>
+        </div>
+
+        <div class="expectations">
+          <h2>What to Expect</h2>
+          <p>
+            Readers can anticipate a comprehensive analysis covering temporal
+            trends, geographical concentrations, hourly patterns, and a detailed
+            breakdown of reporting organizations. The study will also highlight
+            anomalies and significant patterns worth noting.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="codemirror/lib/codemirror.js"></script>
+    <script src="papaparse/papaparse.min.js"></script>
+    <script src="prism/prism.js"></script>
+    <script>
+      // Fetch the CSV data to get column names and row count
+      fetch("US_Crime_Data.csv")
+        .then((response) => response.text())
+        .then((data) => {
+          let lines = data.split("\n");
+          let columns = lines[0].split(",");
+          document.getElementById("columns").textContent = columns.join(", ");
+          document.getElementById("rowCount").textContent = lines.length - 1; // Excluding header row
+        });
+
+      // Add entry animations
+      window.addEventListener("scroll", function () {
+        let elements = document.querySelectorAll(
+          ".data-details, .purpose, .motive, .expectations"
+        );
+        let position = window.innerHeight;
+        elements.forEach(function (element) {
+          if (element.getBoundingClientRect().top < position) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      });
+
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+
+      // Open modal
+      document
+        .querySelector(".image-section")
+        .addEventListener("click", function (e) {
+          if (e.target.tagName === "IMG") {
+            modal.style.display = "block";
+            modalImg.src = e.target.src;
+            captionText.innerHTML = e.target.nextElementSibling.textContent;
+          }
+        });
+
+      // Close modal
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      function initializePage() {
+        // Set the default active page to "case-study"
+        switchPage("Overview");
+
+        const caseStudyLink = document.getElementById("case-study-link");
+        const dashboardLink = document.getElementById("dashboard-link");
+        const OverviewLink = document.getElementById("Overview-link");
+
+        caseStudyLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          switchPage("case-study");
+        });
+
+        dashboardLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          switchPage("dashboard");
+        });
+
+        OverviewLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          switchPage("Overview");
+        });
+      }
+
+      function switchPage(pageName) {
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => page.classList.remove("show"));
+
+        const selectedPage = document.getElementById(`${pageName}-page`);
+        selectedPage.classList.add("show");
+
+        // Remove the 'active' class from all links and add it to the selected link
+        const links = document.querySelectorAll(".second-navbar a");
+        links.forEach((link) => link.classList.remove("active"));
+        const selectedLink = document.getElementById(`${pageName}-link`);
+        selectedLink.classList.add("active");
+
+        // Update the title text based on the selected page
+        const titleText = getTitleText(pageName);
+        const titleElement = document.querySelector("#f h1");
+        titleElement.textContent = titleText;
+      }
+
+      function getTitleText(pageName) {
+        switch (pageName) {
+          case "case-study":
+            return "Title: US Crime Reporting Patterns - A Case Study";
+          case "dashboard":
+            return "Title: US Crime Reporting Patterns - Dashboard";
+          case "Overview":
+            return "Title: US Crime Reporting Patterns - Overview";
+          default:
+            return "Title: US Crime Reporting Patterns - A Case Study";
+        }
+      }
+    </script>
+  </body>
+</html>

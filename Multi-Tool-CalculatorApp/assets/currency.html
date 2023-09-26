@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>math.js | currency conversion</title>
+
+    <script src="https://unpkg.com/mathjs@11.9.1/lib/browser/math.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(45deg, #3498db, #2ecc71);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      label,
+      select,
+      input,
+      button {
+        margin: 10px;
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+        font-size: 16px;
+      }
+
+      select,
+      input,
+      button {
+        width: 100%;
+        max-width: 300px;
+        box-sizing: border-box;
+      }
+
+      select {
+        appearance: none;
+        background: rgba(255, 255, 255, 0.2);
+        color: #f10909;
+        padding-right: 30px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' d='M8 12.594l5-5V6.406l-5 5-5-5V7.594l5 5zm0-9.188l-5 5V5.594l5-5 5 5v1.812l-5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px 20px;
+      }
+
+      button {
+        background: #3498db;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      button:hover {
+        background: #2980b9;
+      }
+
+.loader-container {
+  margin: 0 auto;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border: 10px solid #f2f2f2;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+.currency {
+  font-size: 130px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: blue;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+/* Media Query for Small Screens */
+@media screen and (max-width: 768px) {
+  .loader {
+    width: 60px;
+    height: 60px;
+    border-width: 8px;
+    font-size: 90px;
+  }
+
+  .currency {
+    font-size: 100px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+      #center{
+        position: relative;
+        margin: 0 auto;
+        width: auto;
+        height: auto;
+        text-align: center;
+      }
+      nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-image: linear-gradient(-45deg, #39496e, #3b6fa7);
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .navbar-title {
+      font-size: 1.5rem;
+    }
+
+    .navbar-title a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar-title a:hover {
+      color: #f0f0f0;
+    }
+    #ic{
+      font-size: xx-large;
+    }
+    </style>
+  </head>
+  <body>
+    <nav>
+  <a href="index.html" class="back-button"><i id="ic" class="fas fa-chevron-left"></i></a>
+  <span class="navbar-title"><a href="index.html">Back</a>   </span>
+
+
+</nav>
+<br ><br>
+    <div id="center">
+            <h1>Currency Conversion</h1><br>
+    <label id="from">From</label><br>
+    <select name="from">
+      <!-- A -->
+      <option value="AUD">Australian Dollars (AUD)</option>
+
+      <!-- B -->
+      <option value="BRL">Brazilian Real (BRL)</option>
+
+      <!-- C -->
+      <option value="CAD">Canadian Dollars (CAD)</option>
+      <option value="CHF">Swiss Franc (CHF)</option>
+      <option value="CNY">
+        Chinese Yuan Renminbi (CNY)
+
+        <!-- D -->
+      </option>
+
+      <option value="DKK">Danish Krone (DKK)</option>
+
+      <!-- E -->
+      <option value="EUR">Euros (EUR)</option>
+
+      <!-- G -->
+      <option value="GBP">Pound Sterling (GBP)</option>
+
+      <!-- H -->
+      <option value="HKD">Hong Kong Dollar (HKD)</option>
+
+      <!-- I -->
+      <option value="INR">Indian Rupee (INR)</option>
+      <option value="IDR">Indonesian Rupiah (IDR)</option>
+
+      <!-- J -->
+      <option value="JPY">Yen (JPY)</option>
+
+      <!-- K -->
+      <option value="KRW">South Korean Won (KRW)</option>
+
+      <!-- M -->
+      <option value="MYR">Malaysian Ringgit (MYR)</option>
+      <option value="MXN">Mexican Peso (MXN)</option>
+
+      <!-- N -->
+      <option value="NOK">Norwegian Krone (NOK)</option>
+      <option value="NZD">New Zealand Dollar (NZD)</option>
+
+      <!-- P -->
+      <option value="PLN">Polish Złoty (PLN)</option>
+
+      <!-- R -->
+      <option value="RUB">Russian Ruble (RUB)</option>
+
+      <!-- S -->
+      <option value="SAR">Saudi Riyal (SAR)</option>
+      <option value="SEK">Swedish Krona (SEK)</option>
+      <option value="SGD">Singapore Dollar (SGD)</option>
+
+      <!-- T -->
+      <option value="THB">Thai Baht (THB)</option>
+      <option value="TRY">Turkish Lira (TRY)</option>
+
+      <!-- U -->
+      <option value="USD">US Dollars (USD)</option>
+      <option value="AED">United Arab Emirates Dirham (AED)</option>
+
+      <!-- Z -->
+      <option value="ZAR">South African Rand (ZAR)</option>
+    </select>
+<br>
+    <input required type="text" name="amount" placeholder="0" /><br><br>
+
+    <label id="to">To</label><br>
+    <select name="to">
+      <!-- A -->
+      <option value="AUD">Australian Dollars (AUD)</option>
+
+      <!-- B -->
+      <option value="BRL">Brazilian Real (BRL)</option>
+
+      <!-- C -->
+      <option value="CAD">Canadian Dollars (CAD)</option>
+      <option value="CHF">Swiss Franc (CHF)</option>
+      <option value="CNY">
+        Chinese Yuan Renminbi (CNY)
+
+        <!-- D -->
+      </option>
+
+      <option value="DKK">Danish Krone (DKK)</option>
+
+      <!-- E -->
+      <option value="EUR">Euros (EUR)</option>
+
+      <!-- G -->
+      <option value="GBP">Pound Sterling (GBP)</option>
+
+      <!-- H -->
+      <option value="HKD">Hong Kong Dollar (HKD)</option>
+
+      <!-- I -->
+      <option value="INR">Indian Rupee (INR)</option>
+      <option value="IDR">Indonesian Rupiah (IDR)</option>
+
+      <!-- J -->
+      <option value="JPY">Yen (JPY)</option>
+
+      <!-- K -->
+      <option value="KRW">South Korean Won (KRW)</option>
+
+      <!-- M -->
+      <option value="MYR">Malaysian Ringgit (MYR)</option>
+      <option value="MXN">Mexican Peso (MXN)</option>
+
+      <!-- N -->
+      <option value="NOK">Norwegian Krone (NOK)</option>
+      <option value="NZD">New Zealand Dollar (NZD)</option>
+
+      <!-- P -->
+      <option value="PLN">Polish Złoty (PLN)</option>
+
+      <!-- R -->
+      <option value="RUB">Russian Ruble (RUB)</option>
+
+      <!-- S -->
+      <option value="SAR">Saudi Riyal (SAR)</option>
+      <option value="SEK">Swedish Krona (SEK)</option>
+      <option value="SGD">Singapore Dollar (SGD)</option>
+
+      <!-- T -->
+      <option value="THB">Thai Baht (THB)</option>
+      <option value="TRY">Turkish Lira (TRY)</option>
+
+      <!-- U -->
+      <option value="USD">US Dollars (USD)</option>
+      <option value="AED">United Arab Emirates Dirham (AED)</option>
+
+      <!-- Z -->
+      <option value="ZAR">South African Rand (ZAR)</option>
+    </select><br>
+    <button id="convertButton">Convert</button><br><br>
+    <div id="result">Result</div><br>
+    <div id="rate"></div>
+    <div class="loader-container" id="loaderContainer">
+      <div class="loader">
+        <div class="currency" id="currency">$</div>
+      </div>
+    </div>
+
+    <!-- ... (same HTML structure) ... -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const fromCurrencySelect = document.querySelector("[name='from']");
+        const toCurrencySelect = document.querySelector("[name='to']");
+        const amountInput = document.querySelector("[name='amount']");
+        const convertButton = document.querySelector("#convertButton");
+        const resultDiv = document.querySelector("#result");
+        const rateDiv = document.querySelector("#rate");
+        const loaderContainer = document.querySelector(".loader-container");
+        const currencyElement = document.querySelector("#currency"); // Currency element to update
+
+        // API Key - Replace with your actual API key
+        const apiKey = "8uH3sK5VzGlfM0x8udPDEA0DPpt1rWpZ";
+
+        // Event listener for the "Convert" button
+        convertButton.addEventListener("click", function () {
+          const fromCurrency = fromCurrencySelect.value;
+          const toCurrency = toCurrencySelect.value;
+          const amount = parseFloat(amountInput.value);
+
+          if (isNaN(amount) || amount <= 0) {
+            resultDiv.textContent = "Please enter a valid amount.";
+            return;
+          }
+
+          const url = `https://api.apilayer.com/fixer/convert?to=${toCurrency}&from=${fromCurrency}&amount=${amount}`;
+
+          const myHeaders = new Headers();
+          myHeaders.append("apikey", apiKey);
+
+          const requestOptions = {
+            method: "GET",
+            redirect: "follow",
+            headers: myHeaders,
+          };
+
+          currencyElement.innerText = "$"; // Initialize with a default currency symbol
+          loaderContainer.style.display = "flex";
+
+          // Function to rotate through currency symbols
+          function rotateCurrency() {
+            const currencies = ["$", "€", "¥", "£", "₹"];
+            let currentIndex = 0;
+
+            setInterval(() => {
+              currentIndex = (currentIndex + 1) % currencies.length;
+              currencyElement.innerText = currencies[currentIndex];
+            }, 200); // Change currency symbol every 200 milliseconds
+          }
+
+          rotateCurrency(); // Start the rotation
+
+          // Fetching the conversion result
+          fetch(url, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+              const result = data.result;
+              const rate = data.info.rate;
+
+              const formattedResult = new Intl.NumberFormat(undefined, {
+                style: "currency",
+                currency: toCurrency,
+              }).format(result);
+              const formattedRate = new Intl.NumberFormat(undefined, {
+                style: "currency",
+                currency: fromCurrency,
+              }).format(rate);
+
+              resultDiv.textContent = `Result: ${formattedResult}`;
+              rateDiv.innerHTML = `<p>As per current rate 1 ${fromCurrency} is equal to ${formattedRate} ${toCurrency}</p>`;
+
+              // Hide the loader after data is fetched and displayed
+              loaderContainer.style.display = "none";
+            })
+            .catch((error) => {
+              resultDiv.textContent =
+                "An error occurred. Please check your internet and try again.";
+              console.log("error", error);
+              loaderContainer.style.display = "none"; // Hide the loader in case of error
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
