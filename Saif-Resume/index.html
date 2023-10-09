@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simple-icons@v6/font/simple-icons.min.css"
+    />
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <!-- Your other stylesheets or scripts here -->
+    <style>
+      .resume-wrapper {
+        display: flex;
+      }
+      .left-side {
+        width: 30%;
+        padding: 20px;
+        background-color: #9DC3E6; /* Adjust color as needed */
+      }
+
+      .profile-image img {
+        width: 200px;
+        height: 250px;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+      }
+
+      .name,
+      .job-title {
+        text-align: center;
+      }
+
+      .contact-info div {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      .fas,
+      .fab {
+        margin-right: 10px;
+      }
+
+      .skills .skill {
+        margin: 10px 0;
+      }
+
+      .filled-circle {
+        width: 10px;
+        height: 10px;
+        background-color: black; /* Adjust color as needed */
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      .languages .language {
+        margin: 10px 0;
+      }
+
+      .right-side {
+        width: 70%;
+        padding: 10px;
+        background-color: #fcfcfc; /* Adjust color as needed */
+      }
+
+      .profile-summary,
+      .experience,
+      .education,
+      .certifications {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .job,
+      .degree,
+      .certification {
+        margin: 20px 0;
+      }
+
+      .job-duration,
+      .degree-duration,
+      .certification-date {
+        font-size: 14px;
+        color: gray; /* Adjust color as needed */
+        margin-bottom: 10px;
+        display: block;
+      }
+      /* For devices with width less than 768px (like mobile phones) */
+      @media only screen and (max-width: 768px) {
+        .resume-wrapper {
+          flex-direction: column;
+        }
+
+        .left-side,
+        .right-side {
+          width: 100%;
+        }
+
+        .profile-image img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .name,
+        .job-title {
+          font-size: 24px; /* Adjust size as needed */
+        }
+
+        .contact-info div,
+        .skills .skill,
+        .languages .language {
+          font-size: 12px; /* Adjust size as needed */
+        }
+      }
+      .profile-summary,.certifications,.education.experience{
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+      .download-link {
+    position: absolute;
+    top: 10px; /* adjust as needed */
+    right: 10px; /* adjust as needed */
+    z-index: 10;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transform: perspective(500px) rotateX(20deg);
+    transition: transform 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+    
+    /* For 3D effect */
+    background: #FFF; /* or any other contrasting color */
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 10 10px 16px rgba(0, 5, 5, 0.1);
+}
+
+.download-link i {
+    margin-right: 5px;
+}
+
+.download-link:hover {
+    transform: perspective(600px) rotateX(35deg) scale(1.08);
+    animation: shadowPulse 1s infinite;
+}
+
+@keyframes shadowPulse {
+    0% {
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+    }
+    100% {
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1);
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="resume-wrapper">
+      <div class="left-side">
+        <a href="assets/resume.docx" class="download-link">
+          <i class="fas fa-download"></i>
+          Download
+        </a>
+
+        <div class="profile-image">
+          <img src="Saif-removebg-preview.png" alt="Profile Image" />
+        </div>
+        <h1 class="name">Saif Abdul Qadeer</h1>
+        <h2 class="job-title">Data Science</h2>
+        <div class="contact-info">
+          <div>
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:(123) 456-7890">(317) 792-0409</a>
+          </div>
+          <div>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:john.doe@example.com">saifabdulqadeer@gmail.com</a>
+          </div>
+          <div>
+            <i class="fas fa-map-marker-alt"></i>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Fishers,+Indiana"
+              target="_blank"
+              >Fishers, Indiana</a
+            >
+          </div>
+
+          <div>
+            <i class="fas fa-globe"></i>
+            <a href="http://www.johndoe.com" target="_blank">www.johndoe.com</a>
+          </div>
+          <div>
+            <i class="fab fa-linkedin"></i>
+            <a
+              href="https://www.linkedin.com/in/saif-abdul-qadeer-6ab211259/"
+              target="_blank"
+              >linkedin profile</a
+            >
+          </div>
+          <!-- <div>
+            <span
+              class="iconify"
+              data-icon="logos:indeed"
+              data-inline="false"
+            ></span>
+            <a href="https://www.indeed.com/" target="_blank">Indeed Profile</a>
+          </div>
+          <div>
+            <i class="si si-indeed"></i>
+            <a href="https://www.indeed.com/" target="_blank">Indeed Profile</a>
+          </div> -->
+        </div>
+
+        <div class="skills">
+          <!-- Example skill (repeat as needed) -->
+          <h2 class="job-title">Skills</h2>
+          <div class="skill">
+            <div id="skillsContainer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="profile-summary">
+          <h2>Profile Summary</h2>
+          <p>
+            Professional Data Analyst with Google Data Analyst Certification.
+            Highly skilled and motivated Data Analyst with Google Data Analyst
+            Certification and currently pursuing a Bachelor's Degree in Data Science. 
+            Proficient in analyzing complex datasets, identifying trends and providing valuable
+            insights to drive data-driven decision making. Leveraging a unique blend of technical 
+            expertise and creative problem solving to deliver impactful solutions for business
+            challenges. 
+
+          </p>
+        </div>
+
+        <div class="education">
+          <h2>Education</h2>
+          <!-- Example education (repeat as needed) -->
+          <div class="degree">
+            <h3> College Student : BS in Data Science</h3>
+            <span class="degree-duration">Anticipated Graduation 2024</span>
+            <p>	IUPUI, Indianapolis IN	</p>
+          </div>
+        </div>
+
+        <div class="experience">
+          <h2>Experience</h2>
+          <!-- Example experience (repeat as needed) -->
+          <div class="job">
+            <h3>Office Assistant At Computer Nook</h3>
+            <span class="job-duration">05/2022 to 07/2022</span>
+            <p>
+                During my summer work experience as an office assistant, I actively engaged in diverse 
+                 technical tasks, primarily focusing on assembling and configuring personal computers.
+                 I demonstrated strong problem-solving skills by assisting customers with technical 
+                 inquiries and providing efficient solutions. Additionally, I played a pivotal role 
+                 in the installation and maintenance of various software and hardware components. 
+                 Through this experience, I honed my multitasking abilities and contributed to the 
+                 seamless functioning of the office environment. My dedication to providing exceptional 
+                 technical support and my adaptability in handling various tasks made me an integral part
+                 of the team.
+            </p>
+        </div>
+        </div>
+        <div class="certifications">
+          <h2>Certifications</h2>
+          <!-- Example certification (repeat as needed) -->
+          <div class="certification">
+            <h3>Google Data Analytics</h3>
+            <span class="certification-date">May 31, 2023</span>
+            <p>By Google</p>
+          </div>
+          <hr>
+          <p>Note: To delve deeper into my range of projects and gain a richer understanding of my professional journey, I warmly invite you to explore my website portfolio.</p>
+        </div>
+      </div>
+    </div>
+</div>   
+
+<script>
+// When the page loads, immediately start the shadowPulse animation
+document.querySelector(".download-link").style.animation = "shadowPulse 1s infinite";
+
+document.querySelector(".download-link").addEventListener("click", function() {
+    const iconElem = this.querySelector("i");
+
+    // Stop the shadowPulse animation when download link is clicked
+    this.style.animation = "none";
+
+    // Change the icon and text color upon click
+    iconElem.classList.remove("fas", "fa-download");
+    iconElem.classList.add("fas", "fa-check");
+    this.textContent = " Downloaded!";
+    this.prepend(iconElem);
+    this.style.color = "#28a745"; // green color
+
+    // Reset the icon and text color after a few seconds
+    setTimeout(() => {
+        iconElem.classList.remove("fas", "fa-check");
+        iconElem.classList.add("fas", "fa-download");
+        this.textContent = " Download";
+        this.prepend(iconElem);
+        this.style.color = "black";
+
+        // Resume the shadowPulse animation after the setTimeout is completed
+        this.style.animation = "shadowPulse 1s infinite";
+    }, 2000); // 2 seconds
+});
+
+const skills = [
+    "Python",                   
+    "R",                        
+    "SQL",                      
+    "Data Analysis",            
+    "Machine Learning",         
+    "Data Visualization",       
+    "Tableau",                  
+    "Big Data",                 
+    "Google Cloud",             
+    "Team Collaboration",        
+    "Database Management",
+    "MS PowerPoint",             
+    "Basic Math Skills",         
+    "Project Management",               
+    "Descriptive Statistics",   
+    "Data Collection",          
+    "Problem Solving",          
+    "Research Skills",          
+    "Critical Thinking",        
+    "Data Interpretation",      
+    "Dashboard Design",
+    "Google Analytics",         
+    "Spreadsheet Analysis",     
+    "Storytelling with Data"    
+];
+
+// Function to remove duplicates from an array
+function removeDuplicates(array) {
+    return [...new Set(array)];
+}
+
+// Displaying skills on the HTML page
+const skillsContainer = document.getElementById("skillsContainer");
+const uniqueSkills = removeDuplicates(skills); // Remove duplicates
+
+uniqueSkills.forEach((skill) => {
+    let skillSpan = document.createElement("span");
+    skillSpan.classList.add("skill-name");
+    skillSpan.innerText = "--" + skill + ", ---";
+    skillsContainer.appendChild(skillSpan);
+});
+
+    </script>
+  </body>
+</html>

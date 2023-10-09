@@ -1,0 +1,922 @@
+/* body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+.card {
+  display: inline-block;
+  box-shadow: 10px 10px 10px 22px #070707;
+  /* background-image: url("images/dataviz.png"); */
+  width: 300px; /* Set width for each card */
+  height: auto; /* Set height for each card */
+  border-radius: 10px;
+
+  margin: 20px; /* Add some margin between cards */
+  z-index: 99;
+}
+.cardimg {
+  object-fit: cover;
+  z-index: -11;
+}
+.card2 {
+  display: inline-block;
+  box-shadow: -19px 19px 28px #0a0a0a, 19px -19px 28px #040404;
+  background-image: url("images/dataviz.png");
+  width: 300px; /* Set width for each card */
+  height: auto; /* Set height for each card */
+  border-radius: 10px;
+  margin: 20px; /* Add some margin between cards */
+}
+
+.card img {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  left: 20px;
+  width: 93%;
+  height: 25%; /* Set the height for the card image */
+  object-fit: cover; /* Maintain image aspect ratio */
+  border-radius: 10px 10px 0 0;
+}
+
+.card h3,
+.card p {
+  margin: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px 2px #5a5a5a;
+}
+.svg {
+  width: 25px;
+  height: 25px;
+  transform: translateY(25%);
+  fill: var(--font-color);
+}
+
+.card__links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.card__links .link {
+  color: var(--font-color);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.card__links .link:hover {
+  text-decoration: underline;
+}
+/* 2 */
+.card2 img {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  left: 20px;
+  width: 93%;
+  height: 25%; /* Set the height for the card image */
+  object-fit: cover; /* Maintain image aspect ratio */
+  border-radius: 10px 10px 0 0;
+}
+
+.card2 h3,
+.card2 p {
+  margin: 10px;
+}
+
+.card2 h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card2 p {
+  font-size: 1rem;
+}
+
+.card2:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px 2px #5a5a5a;
+}
+.svg {
+  margin-left: 150px;
+  width: 25px;
+  height: 25px;
+  transform: translateY(25%);
+  fill: var(--font-color);
+}
+
+.card2__links {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.card2__links .link {
+  color: var(--font-color);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.card2__links .link:hover {
+  text-decoration: underline;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between; /* This line is added to push child elements to the far ends */
+  background-color: #ff6347;
+  width: 100ppx; /* Corrected typo from 100ppx to 100% */
+  color: whitesmoke;
+  height: 450px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0px 90px;
+}
+
+.image-container1 {
+  margin-left: 5%; /* You can adjust or remove this depending on exact placement */
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.image-container1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-container {
+  margin-top: 50px;
+  max-width: 60%;
+  background-color: none;
+  color: aliceblue;
+  padding: 20px;
+  overflow: hidden;
+}
+
+#rotating-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 767px) {
+  .container1 {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+  }
+  .image-container1 {
+    margin-left: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+/* container 2 */
+
+/* Apply flexbox to the container */
+#container2 {
+  padding: 0px 6px;
+  display: flex;
+  background-color: cadetblue;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  color: white;
+}
+
+/* Set the width for the image container */
+.image-container2 {
+  margin-top: 10%;
+  position: relative;
+  margin-left: 5%;
+  width: 350px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.image-container2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Make sure the image doesn't exceed the container */
+#rotating-image2 {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Add spacing between the image and content */
+.content-container2 {
+  flex: 1;
+  padding: 0 5px;
+  margin-right: 5%;
+  margin-left: 10%;
+  justify-content: center;
+}
+
+/* Additional styling for content (optional) */
+.content-container2 h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 767px) {
+  #container2 {
+    flex-direction: column;
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .image-container2 {
+    margin-left: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .content-container2 {
+    margin-left: 0;
+    padding: 0;
+  }
+}
+
+#scroll-div {
+  margin-top: 0;
+  margin: 0;
+  padding: 0;
+  background-color: maroon;
+  overflow: hidden;
+  color: white;
+  display: block; /* Start with the div hidden */
+}
+
+/* Add CSS for animation */
+@keyframes unfoldFromLeft {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Reset the default styles for <hr> */
+hr {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+/* Additional CSS for the skills section */
+#skills-div.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform; /* Add will-change property */
+}
+
+#skills-div.show {
+  opacity: 1;
+  transform: translateY(0);
+  background-color: #080808;
+  color: whitesmoke;
+  margin-top: 0%;
+  overflow: hidden;
+}
+#div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skills-bar-container {
+  width: 48%; /* Adjust the width as needed to allow some space between columns */
+}
+
+.development_title {
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background-color: #080808;
+  color: whitesmoke;
+  overflow: hidden;
+}
+
+.skills-bar-container {
+  margin-top: 30px;
+  position: relative;
+  width: 40%;
+  min-width: 350px;
+  margin: 0 auto; /* Center the skills-bar-container */
+  padding: 0; /* Remove any default padding */
+  list-style: none;
+}
+
+.skills-bar-container li {
+  position: relative;
+  width: 100%;
+  padding: 1px 0; /* Adjust padding as needed */
+}
+
+.progressbar-title {
+  color: #ff6347;
+}
+
+.progressbar-title h3 {
+  display: inline-block;
+  position: relative;
+  top: 17px;
+  color: whitesmoke;
+}
+
+.progressbar-title .percent {
+  position: absolute;
+  right: 2px;
+  top: 40px;
+}
+
+.bar-container {
+  background: #555;
+  position: relative;
+  width: 100%;
+  height: 10px;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Adjust margin as needed */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.bar-container .progressbar {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  border-radius: 5px;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.progresstomatoes {
+  background: #ff6347;
+}
+
+#progress-html {
+  animation-name: progress-html;
+  animation-delay: 4.9s;
+}
+
+#progress-css {
+  animation-name: progress-css;
+  animation-delay: 4.9s;
+}
+
+#progress-javascript {
+  animation-name: progress-javascript;
+  animation-delay: 4.9s;
+}
+
+#progress-php {
+  animation-name: progress-php;
+  animation-delay: 4.9s;
+}
+
+#progress-wordpress {
+  animation-name: progress-wordpress;
+  animation-delay: 4.9s;
+}
+
+#progress-bootstrap {
+  animation-name: progress-bootstrap;
+  animation-delay: 4.9s;
+}
+
+#progress-laravel {
+  animation-name: progress-laravel;
+  animation-delay: 4.9s;
+}
+#progress-python {
+  animation-name: progress-laravel;
+  animation-delay: 4.9s;
+}
+
+@keyframes progress-html {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+@keyframes progress-css {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+@keyframes progress-javascript {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+
+@keyframes progress-php {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 55%;
+  }
+}
+
+@keyframes progress-bootstrap {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+@keyframes progress-wordpress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+
+@keyframes progress-laravel {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 35%;
+  }
+}
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color: #f0f0f0;
+}
+
+.active {
+  background-color: #666;
+}
+.pr {
+  text-align: center;
+}
+#skills {
+  display: block;
+  background-color: #080808;
+  color: whitesmoke;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#projects {
+  display: block;
+  background-color: maroon;
+  color: whitesmoke;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+/* Add this CSS to style the drop-down menu */
+/* .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #030303;
+  min-width: 160px;
+  box-shadow: 10px 18px 26px 10px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(235, 229, 229);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #7f9bb4;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+} */
+.preparemt-div {
+  bottom: 0;
+  background-color: #333;
+  color: #ff6347;
+  width: 100%;
+  height: auto;
+}
+.parent-div {
+  display: flex;
+}
+
+.left-div,
+.right-div {
+  flex: 1;
+  text-align: center;
+}
+
+.contactheader {
+  margin: 0;
+  text-align: center;
+}
+#contactheader {
+  margin: 0;
+  text-align: center;
+}
+/* Styles for the social media list */
+.social-media-list {
+  list-style: none;
+  display: flex;
+}
+
+/* Styles for individual icons */
+.social-media-list li {
+  margin-right: 10px;
+}
+
+/* LinkedIn */
+.linkedin i {
+  color: #0e76a8; /* LinkedIn Blue */
+}
+
+/* GitHub */
+.github i {
+  color: #070707; /* Black */
+}
+
+/* Instagram */
+.instagram i {
+  color: #bc2a8d; /* Instagram Pink */
+}
+
+/* Facebook */
+.facebook i {
+  color: #1877f2; /* Facebook Blue */
+}
+
+/* Discord */
+.discord i {
+  color: #7289da; /* Discord Blue */
+}
+
+/* Twitter */
+.twitter i {
+  color: #1da1f2; /* Twitter Blue */
+}
+#message {
+  width: 80%;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 10px 18px 26px 10px rgba(0, 0, 0, 0.2);
+}
+.social-media-list {
+  margin: 0;
+  justify-content: center;
+  font-size: 54px;
+  list-style: none;
+  display: flex;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+.social-media-list li {
+  padding: 10px;
+}
+.social-media-list li a:hover {
+  background-color: #9ce3f5; /* Change to your desired hover color */
+}
+
+.social-media-list li a:active {
+  transform: scale(4.2); /* Increase icon size on click */
+  transition: transform 0.8s ease; /* Add transition effect */
+}
+/* Existing CSS */
+
+/* ... (your existing CSS) ... */
+
+/* Media Queries for Responsiveness */
+
+/* For tablets (768px and up) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .parent-div {
+    flex-direction: column;
+  }
+
+  .left-div,
+  .right-div {
+    width: 100%;
+  }
+
+  #message {
+    width: 90%;
+  }
+
+  .social-media-list {
+    font-size: 40px;
+  }
+}
+
+/* For mobile phones (up to 767px) */
+@media (max-width: 767px) {
+  .parent-div {
+    flex-direction: column;
+  }
+
+  .left-div,
+  .right-div {
+    width: 100%;
+  }
+
+  #message {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .social-media-list {
+    font-size: 30px;
+  }
+}
+
+/* Styles for the popup */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.popup i {
+  font-size: 36px;
+  color: #00cc00; /* Green color for the check mark icon */
+  margin-bottom: 10px;
+}
+/* Existing CSS */
+
+#Certificates-div {
+  text-align: center;
+  justify-content: center;
+  display: block;
+  width: 100%;
+  height: auto;
+  color: green;
+  background-color: lightblue;
+}
+
+#Certificates-card {
+  margin: 0 auto;
+  display: block;
+  background-color: #00cc00;
+  width: 80%;
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets (768px and up) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #Certificates-card {
+    width: 90%;
+  }
+}
+
+/* For mobile phones (up to 767px) */
+@media (max-width: 767px) {
+  #Certificates-card {
+    width: 95%;
+  }
+}
+#summary {
+  font-size: x-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#profile {
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#me {
+  font-size: x-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#about {
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 skills per row */
+  gap: 20px;
+  padding: 20px;
+}
+
+.skill h4 {
+  margin-bottom: 10px;
+}
+
+.progress {
+  background-color: #ececec; /* light gray */
+  border-radius: 5px;
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #3498db; /* adjust color as desired */
+  height: 100%;
+  line-height: 20px; /* aligns text vertically */
+  text-align: center; /* centers percentage text */
+  border-radius: 5px;
+}
+
+/* Responsiveness for tablets and phones */
+@media only screen and (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr; /* 1 skill per row on smaller screens */
+  }
+}
+#skill {
+  text-align: center;
+  font-size: xx-large;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+@media only screen and (min-width: 768px) {
+  .dr {
+    display: none;
+  }
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #333;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav a:hover,
+.nav a.active {
+  background-color: #555;
+  color: #f1f1f1;
+}
+
+.nav a i {
+  margin-right: 5px;
+}
+/* ... previous CSS ... */
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  left: 30%;
+  text-align: flex start center;
+  justify-content: center;
+}
+.nav.sticky {
+  padding: 10px 0;
+}
+.nav.open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  z-index: 999;
+  background: black;
+  color: white;
+  font-size: x-large;
+  text-align: center;
+  padding-left: 15px;
+}
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    position: relative;
+    align-items: flex-start;
+    z-index: 1000;
+    position: sticky;
+  }
+
+  .nav a {
+    display: none;
+  }
+
+  .nav a.active,
+  .nav a:hover {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    z-index: 1000;
+    left: 30%;
+    padding-left: 15px;
+    text-align: flex start center;
+    justify-content: center;
+  }
+
+  .nav.show a {
+    display: block;
+    left: 30%;
+    text-align: flex start center;
+    justify-content: center;
+  }
+  .nav.open {
+    box-shadow: 100 120px 198px rgba(0, 0, 5.5, 5.5);
+  }
+}
+.nav.open a {
+  display: block;
+  text-align: center;
+  text-align: flex start center;
+  justify-content: center;
+}
+.nav.open {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav {
+  box-shadow: 0 12px 14px rgba(2, 3, 2.4, 5.1);
+}
+.nav.open {
+  box-shadow: 0 120px 198px rgba(0, 0, 5.5, 5.5);
+}
+.nav.sticky {
+  box-shadow: 0 8px 4px rgba(2, 3, 2.4, 5.1);
+}
