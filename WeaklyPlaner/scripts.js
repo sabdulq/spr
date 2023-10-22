@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   } else {
-    plansContainer.innerHTML = "<p>No plans</p>";
+    plansContainer.innerHTML = "<p>No plans added</p>";
   }
 });
 
