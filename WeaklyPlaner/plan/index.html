@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Plan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Add a New Plan</h1>
+    </header>
+
+    <main>
+      <section id="add-plan">
+        <form id="plan-form">
+          <label for="title">Title:</label>
+          <input type="text" id="title" required />
+
+          <div id="week">
+            <div class="day" id="monday">
+              <h3>Monday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('monday')">
+                <i class="fas fa-plus add-task-icon"></i> Add Task
+              </button>
+            </div>
+            <div class="day" id="tuesday">
+              <h3>Tuesday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('tuesday')">
+                <i class="fas fa-plus add-task-icon"></i> Add Task
+              </button>
+            </div>
+            <div class="day" id="Wednesday">
+              <h3>Wednesday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('Wednesday')">
+                <i class="fas fa-plus add-task-icon"></i> Add Task
+              </button>
+            </div>
+            <div class="day" id="Thursday">
+              <h3>Thursday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('Thursday')">
+                <i class="fas fa-plus add-task-icon"></i>Add Task
+              </button>
+            </div>
+            <div class="day" id="Friday">
+              <h3>Friday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('Friday')">
+                <i class="fas fa-plus add-task-icon"></i>Add Task
+              </button>
+            </div>
+            <div class="day" id="Saturday">
+              <h3>Saturday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('Saturday')">
+                <i class="fas fa-plus add-task-icon"></i> Add Task
+              </button>
+            </div>
+            <div class="day" id="Sunday">
+              <h3>Sunday</h3>
+              <div class="tasks"></div>
+              <button type="button" onclick="addTask('Sunday')">
+                <i class="fas fa-plus add-task-icon"></i>Add Task
+              </button>
+            </div>
+            <!-- ... -->
+          </div>
+
+          <button type="submit"><i class="fas fa-save"></i> Save Plan</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

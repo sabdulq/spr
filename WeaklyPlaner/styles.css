@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  color: white;
+}
+
+header {
+  background-color: #4a00e0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+#plans {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+#plans-container {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #4a00e0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6a11cb;
+}
+
+/* New CSS for table layout */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  overflow-wrap: normal;
+}
+
+th,
+td {
+  border: 1px solid #4a00e0;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4a00e0;
+}
+
+@media only screen and (max-width: 1100px) {
+  th,
+  td {
+    font-size: 10px;
+    padding: 2px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  th,
+  td {
+    font-size: 5px;
+    padding: 1px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  #plans {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    overflow-x: auto;
+  }
+}
