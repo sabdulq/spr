@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entropy and Information Gain Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #4caf50;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+      }
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      .navbar a.active {
+        background-color: #4caf50;
+        color: white;
+      }
+      .navbar .icon {
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        .navbar a:not(:first-child) {
+          display: none;
+        }
+        .navbar a.icon {
+          float: right;
+          display: block;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .navbar.responsive {
+          position: relative;
+        }
+        .navbar.responsive .icon {
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .navbar.responsive a {
+          float: none;
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .input-box {
+        text-align: start;
+        width: 100%;
+        height: 150px;
+        margin-bottom: 5px;
+        resize: vertical;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .results {
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: #fff;
+      }
+      button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      /* ... (other styles) */
+      .content {
+        padding: 20px;
+      }
+      .content h3 {
+        margin-top: 0;
+      }
+        .step-by-step-guide {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .step-by-step-guide h3 {
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  .step-by-step-guide h4 {
+    color: #4caf50;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .step-by-step-guide p {
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+  }
+
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        &#9776;
+      </a>
+    </div>
+
+    <header>
+      <h1>Entropy and Information Gain Calculator</h1>
+    </header>
+    <div class="container">
+      <textarea
+        required
+        class="input-box"
+        placeholder="Enter your data here..."
+      >
+Outlook,Temperature,Humidity,Windy,Play
+Sunny,Hot,High,False,No
+Sunny,Hot,High,True,No
+Overcast,Hot,High,False,Yes
+Rainy,Mild,High,False,Yes
+Rainy,Cool,Normal,False,Yes
+Rainy,Cool,Normal,True,No
+Overcast,Cool,Normal,True,Yes
+Sunny,Mild,High,False,No
+Sunny,Cool,Normal,False,Yes
+Rainy,Mild,Normal,False,Yes
+Sunny,Mild,Normal,True,Yes
+Overcast,Mild,High,True,Yes
+Overcast,Hot,Normal,False,Yes
+Rainy,Mild,High,True,No
+</textarea
+      >
+
+      <div class="slider-container">
+        <label for="precision">Calculation precision:</label>
+        <input
+          type="range"
+          id="precision"
+          name="precision"
+          min="1"
+          max="10"
+          value="6"
+        />
+        <span id="precision-value">6</span>
+      </div>
+      <button onclick="calculate()">Calculate</button>
+      <div class="results" id="results">
+        <h2>Results</h2>
+        <div id="entropy"></div>
+        <!-- Added this line -->
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Information Gain</th>
+            </tr>
+          </thead>
+          <tbody id="results-table"></tbody>
+        </table>
+        <button onclick="downloadResults()">Download Results</button>
+      </div>
+    </div>
+<div class="step-by-step-guide" id="step-by-step-guide"></div>
+
+
+    <div class="content">
+      <h3>Entropy</h3>
+      <p>
+        Entropy is a measure of disorder or uncertainty. In the context of
+        information theory, entropy quantifies the expected value of the
+        information contained in a message. The formula for entropy is:
+      </p>
+      <p><strong>H(X) = -Σ (p(x) * log2(p(x)))</strong></p>
+      <p>
+        For example, if we have a dataset with two classes, A and B, and the
+        probability of A is 0.4 and the probability of B is 0.6, the entropy of
+        the dataset is:
+      </p>
+      <p>-0.4*log2(0.4) - 0.6*log2(0.6) = 0.97</p>
+
+      <h3>Information Gain</h3>
+      <p>
+        Information gain is a measure of the effectiveness of an attribute in
+        classifying a dataset. It is calculated as the difference between the
+        entropy of the dataset before and after the attribute is used for
+        splitting. The formula for information gain is:
+      </p>
+      <p><strong>IG(A) = H(D) - Σ ((|Dv| / |D|) * H(Dv))</strong></p>
+      <p>
+        Where IG(A) is the information gain of attribute A, H(D) is the entropy
+        of dataset D, and H(Dv) is the entropy of dataset D after splitting on
+        attribute A.
+      </p>
+      <p>
+        For example, if we have a dataset with an entropy of 0.97, and after
+        splitting on an attribute, the entropy of the dataset is 0.5, the
+        information gain is:
+      </p>
+      <p>0.97 - 0.5 = 0.47</p>
+
+      <h3>Entropy in Decision Trees:</h3>
+      <p>
+        Entropy is often used in the construction of decision trees, which are a
+        popular machine learning algorithm for classification tasks. When
+        building a decision tree, we want to choose the attribute that provides
+        the most information gain, which is equivalent to choosing the attribute
+        that results in the lowest entropy after the split.
+      </p>
+
+      <h3>Information Gain and Overfitting:</h3>
+      <p>
+        While information gain is a useful metric for building decision trees,
+        it can sometimes lead to overfitting. Overfitting occurs when the model
+        is too complex and fits the training data too closely, resulting in poor
+        performance on new, unseen data. To mitigate overfitting, we can use
+        other metrics such as gain ratio or Gini impurity.
+      </p>
+
+      <h3>Real-world Applications:</h3>
+      <p>
+        Entropy and information gain are not just theoretical concepts; they
+        have real-world applications in various fields such as data mining,
+        machine learning, and even biology. For example, in biology, entropy can
+        be used to measure the diversity of species in an ecosystem, while
+        information gain can be used to identify the most important factors
+        affecting a particular biological process.
+      </p>
+  </div>
+
+    </div>
+
+
+    <script>
+      function myFunction() {
+        var x = document.getElementsByClassName("navbar")[0];
+        if (x.className === "navbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "navbar";
+        }
+      }
+
+      document
+        .getElementById("precision")
+        .addEventListener("input", function () {
+          document.getElementById("precision-value").textContent = this.value;
+        });
+
+      function calculate() {
+        const data = document.querySelector(".input-box").value;
+        const precision = document.getElementById("precision").value;
+
+        const rows = data.split("\n").map((row) => row.split(",")); // Updated this line
+        console.log("Rows:", rows);
+        const features = rows[0];
+        const results = {};
+
+        // Calculate entropy for the target feature
+        const targetFeature = features[features.length - 1];
+        const targetValues = rows
+          .slice(1)
+          .map((row) => row[features.length - 1]);
+        const targetEntropy = calculateEntropy(targetValues);
+  
+  // Update entropy
+  const entropyDiv = document.getElementById('entropy');
+  entropyDiv.innerHTML = `<h3>Entropy: ${targetEntropy.toFixed(precision)}</h3>`;
+  
+  // Update step-by-step guide
+  const guideDiv = document.getElementById('step-by-step-guide'); // Added this line
+  guideDiv.innerHTML = '<h3>Step-by-Step Guide</h3>'; // Added this line
+  
+  // Step-by-step guide for all features
+  guideDiv.innerHTML += `<p>1. Calculate the entropy of the dataset: H(D) = -Σ (p(x) * log2(p(x))) = ${targetEntropy.toFixed(precision)}</p>`; // Added this line
+  
+  features.forEach((feature, featureIndex) => {
+    const featureValues = rows.slice(1).map(row => row[featureIndex]); // Feature values
+    const uniqueFeatureValues = [...new Set(featureValues)]; // Unique feature values
+    guideDiv.innerHTML += `<h4>${feature}</h4>`; // Added this line
+    
+    let featureEntropy = 0;
+    uniqueFeatureValues.forEach((uniqueValue, index) => {
+      const filteredTargetValues = targetValues.filter((_, i) => featureValues[i] === uniqueValue);
+      const entropy = calculateEntropy(filteredTargetValues);
+      const proportion = filteredTargetValues.length / targetValues.length;
+      featureEntropy += proportion * entropy;
+      
+      guideDiv.innerHTML += `<p>2.${index + 1} For feature value ${uniqueValue}: H(Dv) = ${entropy.toFixed(precision)}</p>`; // Added this line
+    });
+    
+    const informationGain = targetEntropy - featureEntropy;
+    guideDiv.innerHTML += `<p>3. Calculate the information gain: IG(${feature}) = H(D) - Σ ((|Dv| / |D|) * H(Dv)) = ${informationGain.toFixed(precision)}</p>`; // Added this line
+  });
+  // ... (add more steps and explanations)
+
+
+
+        // Calculate information gain for each feature
+        for (let i = 0; i < features.length - 1; i++) {
+          const featureValues = rows.slice(1).map((row) => row[i]);
+          const informationGain = calculateInformationGain(
+            featureValues,
+            targetValues,
+            targetEntropy
+          );
+          results[features[i]] = +informationGain.toFixed(precision);
+          const entropyDiv = document.getElementById("entropy");
+          entropyDiv.innerHTML = `<h3>Entropy: ${targetEntropy.toFixed(
+            precision
+          )}</h3>`; // Updated this line
+        }
+
+        console.log("Results:", results);
+
+        // Update the results table
+        const resultsTable = document.getElementById("results-table");
+        resultsTable.innerHTML = "";
+        for (const feature in results) {
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${feature}</td><td>${results[feature]}</td>`;
+          resultsTable.appendChild(row);
+        }
+      }
+
+      function calculateEntropy(values) {
+        const counts = {};
+        values.forEach((value) => {
+          counts[value] = (counts[value] || 0) + 1;
+        });
+        const probabilities = Object.values(counts).map(
+          (count) => count / values.length
+        );
+        return -probabilities.reduce((sum, p) => sum + p * Math.log2(p), 0);
+      }
+
+      function calculateInformationGain(
+        featureValues,
+        targetValues,
+        targetEntropy
+      ) {
+        const uniqueFeatureValues = [...new Set(featureValues)];
+        let informationGain = targetEntropy;
+        uniqueFeatureValues.forEach((uniqueValue) => {
+          const filteredTargetValues = targetValues.filter(
+            (_, index) => featureValues[index] === uniqueValue
+          );
+          const entropy = calculateEntropy(filteredTargetValues);
+          informationGain -=
+            (filteredTargetValues.length / targetValues.length) * entropy;
+        });
+        return informationGain;
+      }
+
+      function downloadResults() {
+        const resultsTable = document.getElementById("results-table");
+        const rows = Array.from(resultsTable.querySelectorAll("tr"));
+        const csvContent = rows
+          .map((row) =>
+            Array.from(row.querySelectorAll("td"))
+              .map((td) => td.textContent)
+              .join(",")
+          )
+          .join("\n");
+        const blob = new Blob([csvContent], {
+          type: "text/csv;charset=utf-8;",
+        });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "results.csv";
+        link.click();
+      }
+    </script>
+  </body>
+</html>
