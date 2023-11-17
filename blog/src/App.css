@@ -1,0 +1,75 @@
+/* App.css */
+
+/* Global Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  overflow-x: hidden;
+}
+/* App.css */
+
+/* ... other styles ... */
+
+.side-by-side-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* This adds space between the two components */
+  margin: 20px;
+}
+
+/* Styles for Bibliography and FAQ components */
+.side-by-side-container > div {
+  flex: 1;
+  min-width: 300px; /* Adjust the minimum width as needed */
+}
+
+/* ... other responsive styles ... */
+
+/* Ensures that the elements are not too wide on larger screens */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header styles */
+
+/* Main content styles */
+main {
+  margin: 20px 0;
+}
+
+/* FAQ section styles */
+aside {
+  margin: 20px 0;
+}
+
+/* Footer styles */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjusts styles for tablets and smaller laptops */
+  .container {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Adjusts styles for smartphones */
+  header,
+  footer {
+    text-align: center;
+  }
+}
+
+/* Browser-specific prefixes could be added if necessary, but modern browsers handle most CSS without them. */

@@ -1,0 +1,50 @@
+/* Content.css */
+
+.content {
+  padding: 20px;
+  background: #fff;
+}
+
+.content .main-title {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  width: 40%;
+  color: #333;
+}
+
+.content .subtitle {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #666;
+}
+
+.content p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+  color: #666;
+}
+
+@media screen and (max-width: 768px) {
+  .content .main-title {
+    width: 59%;
+  }
+
+  .content .subtitle {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    padding: 10px;
+  }
+
+  .content .main-title {
+    font-size: 1.5em;
+  }
+
+  .content .subtitle {
+    font-size: 1.2em;
+  }
+}

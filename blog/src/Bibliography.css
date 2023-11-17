@@ -1,0 +1,36 @@
+/* Bibliography.css */
+
+.bibliography {
+  background-color: #f8f8f8;
+  padding: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.bibliography h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.bibliography ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.bibliography li {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .bibliography li {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bibliography {
+    padding: 10px;
+  }
+}

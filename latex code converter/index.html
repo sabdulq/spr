@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Expression to LaTeX</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flexbox;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure the navbar stays on top of other elements */
+      }
+
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: none;
+        color: rgb(168, 168, 240);
+      }
+
+      .navbar .icon {
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        .navbar a:not(:first-child) {
+          display: none;
+        }
+        .navbar a.icon {
+          float: right;
+          display: block;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .navbar.responsive {
+          position: relative;
+          position: sticky;
+          top: 0;
+          z-index: 1000; /* Ensure the navbar stays on top of other elements */
+        }
+        .navbar.responsive .icon {
+          position: absolute;
+          position: sticky;
+          z-index: 1000; /* Ensure the navbar stays on top of other elements */
+          right: 0;
+          top: 0;
+        }
+        .navbar.responsive a {
+          float: none;
+          display: block;
+          width: 100%;
+          text-align: left;
+          position: sticky;
+          top: 0;
+          z-index: 1000; /* Ensure the navbar stays on top of other elements */
+        }
+      }
+
+      .calculator1 {
+        width: 55%;
+        border: 1px solid #ccc;
+        padding: 20px, 20px;
+        border-radius: 5px;
+        margin: 0 auto;
+      }
+      .calculator2 {
+        width: 55%;
+        border: 1px solid #ccc;
+        padding: 20px, 20px;
+        border-radius: 5px;
+        margin: 0 auto;
+      }
+      #math-input,
+      #latex-output {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      #matrix-latex-output {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .button {
+        padding: 5px 10px;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+      @media (max-width: 600px) {
+        .calculator1 {
+          width: 50%;
+        }
+        .calculator2 {
+          width: 50%;
+        }
+      }
+      .matrix-editor {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .matrix-editor table {
+        border-collapse: collapse;
+        margin-right: 10px; /* Add space between matrices */
+      }
+      .matrix-editor td {
+        border: 1px solid #ccc;
+        width: 2em;
+        height: 2em;
+        text-align: center;
+      }
+      .matrix-editor td input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        text-align: center;
+      }
+      .operation {
+        padding: 0 10px;
+      }
+      .header {
+        background-color: #a8c7e8;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Convert Math Expression to LaTeX Code</h1>
+    </header>
+    <div class="navbar">
+      <a href="#u" class="active">Math Expression to LaTeX</a>
+      <a href="#calculator2">Matrix to LaTeX</a>
+      <a href="#contact">Contact</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        &#9776;
+      </a>
+    </div>
+    <br /><br />
+    <header id="u">
+      <h1>Math Expression to LaTeX</h1>
+    </header>
+    <br /><br />
+    <div class="calculator1" id="calculator1">
+      <textarea
+        id="math-input"
+        rows="4"
+        placeholder="Enter your math expression here..."
+      ></textarea>
+      <br />
+      <button class="button" onclick="insertSymbol('√')">√</button>
+      <button class="button" onclick="insertSymbol('^')">^</button>
+      <button class="button" onclick="insertSymbol('π')">π</button>
+      <button class="button" onclick="insertSymbol('log(')">log()</button>
+      <button class="button" onclick="insertSymbol('\\frac{}{}')">
+        Fraction
+      </button>
+      <!-- Linear algebra buttons -->
+      <button class="button" onclick="insertSymbol('\\vec{}')">Vector</button>
+      <button
+        class="button"
+        onclick="insertSymbol('\\begin{bmatrix}\\end{bmatrix}')"
+      >
+        Matrix
+      </button>
+      <button class="button" onclick="insertSymbol('\\cdot')">
+        Dot Product
+      </button>
+      <button class="button" onclick="insertSymbol('\\times')">
+        Cross Product
+      </button>
+      <button class="button" onclick="insertSymbol('\\det{ }')">
+        Determinant
+      </button>
+      <button class="button" onclick="insertSymbol('\\operatorname{tr}( )')">
+        Trace
+      </button>
+      <button class="button" onclick="insertSymbol('\\operatorname{rank}( )')">
+        Rank
+      </button>
+      <button class="button" onclick="insertSymbol('\\int_{}^{}')">
+        Integral
+      </button>
+      <button class="button" onclick="insertSymbol('\\sum_{}^{}')">
+        Summation
+      </button>
+      <button class="button" onclick="insertSymbol('\\lim_{}')">Limit</button>
+      <button class="button" onclick="insertSymbol('\\sin')">Sin</button>
+      <button class="button" onclick="insertSymbol('\\cos')">Cos</button>
+      <button class="button" onclick="insertSymbol('\\tan')">Tan</button>
+      <button class="button" onclick="insertSymbol('\\infty')">Infinity</button>
+      <button class="button" onclick="insertSymbol('\\sqrt[ ]{ }')">
+        Nth Root
+      </button>
+      <button class="button" onclick="insertSymbol('\\left( \\right)')">
+        Parentheses
+      </button>
+      <button class="button" onclick="insertSymbol('\\left[ \\right]')">
+        Brackets
+      </button>
+      <button class="button" onclick="insertSymbol('\\left| \\right|')">
+        Absolute Value
+      </button>
+      <button
+        class="button"
+        onclick="insertSymbol('\\frac{\\partial }{\\partial x}')"
+      >
+        Partial Derivative
+      </button>
+      <button class="button" onclick="insertSymbol('\\overline{ }')">
+        Conjugate/Overline
+      </button>
+      <button class="button" onclick="insertSymbol('\\hat{ }')">Hat</button>
+      <button class="button" onclick="insertSymbol('\\angle')">Angle</button>
+      <!-- Add more buttons as needed -->
+      <button class="button" onclick="convertToLatex1()">
+        Convert to LaTeX
+      </button>
+      <textarea
+        id="latex-output"
+        rows="4"
+        placeholder="LaTeX output will appear here..."
+        readonly
+      ></textarea>
+    </div>
+    <br /><br />
+    <header>
+      <h1>Math Expression to LaTeX</h1>
+    </header>
+    <br /><br />
+    <div class="calculator2" id="calculator2">
+      <div class="matrix-editor" id="matrix-editor"></div>
+      <button class="button" onclick="generateMatrix()">Add Matrix</button>
+      <button class="button" onclick="insertOperation('+')">+</button>
+      <button class="button" onclick="insertOperation('-')">-</button>
+      <button class="button" onclick="insertOperation('×')">×</button>
+      <button class="button" onclick="insertOperation('÷')">÷</button>
+      <button class="button" onclick="insertOperation('=')">=</button>
+      <button class="button" onclick="clearLast()">Clear Last</button>
+      <button class="button" onclick="convertToLatex2()">
+        Convert to LaTeX
+      </button>
+      <textarea
+        id="matrix-latex-output"
+        rows="4"
+        placeholder="LaTeX output will appear here..."
+        readonly
+      ></textarea>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementsByClassName("navbar")[0];
+        if (x.className === "navbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "navbar";
+        }
+      }
+
+      function insertSymbol(symbol) {
+        const mathInput = document.getElementById("math-input");
+        const startPos = mathInput.selectionStart;
+        const endPos = mathInput.selectionEnd;
+        const textBefore = mathInput.value.substring(0, startPos);
+        const textAfter = mathInput.value.substring(
+          endPos,
+          mathInput.value.length
+        );
+        mathInput.value = textBefore + symbol + textAfter;
+        mathInput.focus();
+        mathInput.selectionStart = startPos + symbol.length;
+        mathInput.selectionEnd = startPos + symbol.length;
+      }
+
+      function convertToLatex1() {
+        let content = document.getElementById("math-input").value;
+        // Simple replacements for demonstration purposes
+        content = content.replace(/√/g, "\\sqrt{}");
+        content = content.replace(/\^/g, "^{}");
+        content = content.replace(/π/g, "\\pi ");
+        content = content.replace(/log\(/g, "\\log(");
+        // Add more conversion rules as needed
+
+        document.getElementById("latex-output").value = content;
+      }
+      function generateMatrix() {
+        const rows = prompt("Enter number of rows:", "2");
+        const cols = prompt("Enter number of columns:", "2");
+        const editor = document.getElementById("matrix-editor");
+        const table = document.createElement("table");
+
+        for (let i = 0; i < rows; i++) {
+          const tr = document.createElement("tr");
+          for (let j = 0; j < cols; j++) {
+            const td = document.createElement("td");
+            const input = document.createElement("input");
+            input.type = "text";
+            td.appendChild(input);
+            tr.appendChild(td);
+          }
+          table.appendChild(tr);
+        }
+
+        editor.appendChild(table); // Append the new matrix
+      }
+
+      function insertOperation(op) {
+        const editor = document.getElementById("matrix-editor");
+        const operationSpan = document.createElement("span");
+        operationSpan.className = "operation";
+        operationSpan.textContent = op;
+        editor.appendChild(operationSpan); // Append the operation
+      }
+      function clearLast() {
+        const editor = document.getElementById("matrix-editor");
+        if (editor.lastChild) {
+          editor.removeChild(editor.lastChild);
+        }
+      }
+
+      function convertToLatex2() {
+        const editor = document.getElementById("matrix-editor");
+        let latex = "";
+        const children = editor.childNodes;
+
+        children.forEach((child) => {
+          if (child.tagName === "TABLE") {
+            latex += "\\begin{bmatrix}";
+            const inputs = child.querySelectorAll("input");
+            let colCount = 0;
+            inputs.forEach((input, index) => {
+              latex += input.value || "0";
+              colCount++;
+              if (
+                colCount ===
+                inputs.length / child.querySelectorAll("tr").length
+              ) {
+                latex += " \\\\";
+                colCount = 0;
+              } else {
+                latex += " & ";
+              }
+            });
+            latex = latex.trim().replace(/& \\\\/g, "\\\\"); // Clean up the end of rows
+            latex += "\\end{bmatrix}";
+          } else if (child.className === "operation") {
+            // Convert the operation symbols to LaTeX
+            switch (child.textContent) {
+              case "+":
+                latex += " + ";
+                break;
+              case "-":
+                latex += " - ";
+                break;
+              case "×":
+                latex += " \\times ";
+                break;
+              case "÷":
+                latex += " \\div ";
+                break;
+              case "=":
+                latex += " = ";
+                break;
+              default:
+                latex += " " + child.textContent + " ";
+                break;
+            }
+          }
+        });
+
+        document.getElementById("matrix-latex-output").value = latex;
+      }
+    </script>
+  </body>
+</html>
