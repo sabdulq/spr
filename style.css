@@ -591,31 +591,52 @@ hr {
 .linkedin i {
   color: #0e76a8; /* LinkedIn Blue */
 }
+.linkedin:hover {
+  cursor: url("images/1298749_linkedin_icon.svg"), auto;
+}
 
 /* GitHub */
 .github i {
   color: #070707; /* Black */
+}
+.github:hover {
+  cursor: url("images/8725846_github_alt_icon.svg"), auto;
 }
 
 /* Instagram */
 .instagram i {
   color: #bc2a8d; /* Instagram Pink */
 }
+.instagram:hover {
+  cursor: url("images/1298747_instagram_brand_logo_social media_icon.svg"), auto;
+}
 
 /* Facebook */
 .facebook i {
   color: #1877f2; /* Facebook Blue */
 }
+.facebook:hover {
+  cursor: url("images/3057625_facebook_media_network_social_icon.svg"), auto;
+}
 
 /* Discord */
+
 .discord i {
   color: #7289da; /* Discord Blue */
+}
+.discord:hover {
+  cursor: url("images/8197841_discord_social\ network_communication_interaction_message_icon.svg"),
+    auto;
 }
 
 /* Twitter */
 .twitter i {
   color: #1da1f2; /* Twitter Blue */
 }
+.twitter:hover {
+  cursor: url("images/8726494_twitter_icon.svg"), auto;
+}
+
 #message {
   width: 80%;
   padding: 30px;
@@ -629,13 +650,12 @@ hr {
   list-style: none;
   display: flex;
   position: relative;
-  transition: background-color 0.3s ease;
 }
 .social-media-list li {
   padding: 10px;
 }
 .social-media-list li a:hover {
-  background-color: #9ce3f5; /* Change to your desired hover color */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Add shadow effect */
 }
 
 .social-media-list li a:active {
