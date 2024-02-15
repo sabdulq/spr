@@ -15,8 +15,42 @@ body {
   height: auto; /* Set height for each card */
   border-radius: 10px;
 
-  margin: 20px; /* Add some margin between cards */
+  margin: 40px; /* Add some margin between cards */
   z-index: 99;
+}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 767px) {
+  .card {
+    margin: 25px;
+    font-size: x-small;
+    width: 280px;
+  }
+  .card2 {
+    margin: 25px;
+  }
+}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 667px) {
+  .card {
+    margin: 25px;
+    font-size: x-small;
+    width: 230px;
+  }
+  .card2 {
+    margin: 25px;
+  }
+}
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 567px) {
+  .card {
+    width: 280px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 60px;
+  }
+  .card2 {
+    margin: 25px;
+  }
 }
 .cardimg {
   object-fit: cover;
@@ -195,7 +229,20 @@ body {
     width: 100%;
   }
 }
-
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 766px) {
+  .container1 {
+    flex-direction: row;
+    height: auto;
+    padding: 0px;
+    font-size: xx-small;
+  }
+  .image-container1 {
+    margin-left: 0;
+    margin-bottom: 1px;
+    width: 50%;
+  }
+}
 /* container 2 */
 
 /* Apply flexbox to the container */
@@ -251,15 +298,17 @@ body {
 /* Media Query for Mobile Devices */
 @media screen and (max-width: 767px) {
   #container2 {
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
-    padding: 40px 0;
+    padding: 10px 0;
+    font-size: xx-small;
   }
 
   .image-container2 {
-    margin-left: 0;
-    margin-bottom: 20px;
-    width: 100%;
+    margin-right: 23px;
+    margin-bottom: 0px;
+    width: 50%;
+    height: 100%s;
   }
 
   .content-container2 {
@@ -817,7 +866,7 @@ hr {
 }
 #skill {
   text-align: center;
-  font-size: xx-large;
+  font-size: small;
   font-style: italic;
   font-family: Arial, Helvetica, sans-serif;
 }
